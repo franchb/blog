@@ -4,8 +4,9 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-
 import markdoc from "@astrojs/markdoc";
+
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,4 +42,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
   },
+  output: "server",
+  adapter: cloudflare(),
+  // TODO: switch to a directory mode for Sentry adapter: cloudflare({ mode: "directory" }),
 });
