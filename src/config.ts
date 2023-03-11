@@ -4,7 +4,7 @@ export const SITE = {
   website: "https://franchb.com/",
   author: "franchb",
   desc: "A personal blog.",
-  title: "Blog on franchb.com",
+  title: "franchb.com",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,
@@ -20,7 +20,7 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/franchb/blog",
+    href: "https://github.com/franchb",
     linkTitle: ` ${SITE.title} on Github`,
     active: true,
   },
