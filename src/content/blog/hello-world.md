@@ -14,4 +14,8 @@ Welcome to my blog!
 
 Today is a good date to some extent, in the first days of March, a little magic sometimes appeared in my life.
 
-Here I am going to share some post on programming stuff, useful tricks in my daily life. Hope to convert my thoughts into something readable.
+I work as a lead software engineer in some enterprise company.
+
+I like to think of my blog as a way to keep friends, colleagues, and family up-to-date on what I've been doing and thinking about. Also I woth to write about programming languages I know, security, biology, machine learning and other topics that are close to my interests or work.
+
+Hope to convert my thoughts into something readable!
