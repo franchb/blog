@@ -4,13 +4,14 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
+import { SITE } from "./src/config";
 import markdoc from "@astrojs/markdoc";
 
 // enable to turn on SSR -- import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://franchb.com/",
+  site: SITE.website,
   integrations: [
     tailwind({
       config: {
