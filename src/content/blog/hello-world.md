@@ -6,7 +6,7 @@ postSlug: hello-world
 featured: false
 draft: false
 tags:
-  - personal
+  - personnel
 description: Just the first post in this blog.
 ---
 

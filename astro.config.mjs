@@ -22,6 +22,9 @@ export default defineConfig({
     sitemap(),
     markdoc(),
   ],
+  experimental: {
+    assets: true,
+  },
   markdown: {
     remarkPlugins: [
       remarkToc,

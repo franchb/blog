@@ -1,17 +1,18 @@
 import type { Site, SocialObjects } from "./types";
+import og from "./assets/images/franchbcom-og.png";
 
 export const SITE: Site = {
   website: "https://franchb.com/",
   author: "franchb",
-  desc: "A personal blog.",
-  title: "franchb.com",
-  ogImage: "astropaper-og.jpg",
+  desc: "Blog personnel d'un programmeur qui va apprendre le français.",
+  title: "Blog personnel sur franchb.com",
+  ogImage: og.src,
   lightAndDarkMode: true,
   postPerPage: 3,
 };
 
 export const LOGO_IMAGE = {
-  enable: false,
+  enable: true,
   svg: true,
   width: 216,
   height: 46,
@@ -33,7 +34,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Mail",
     href: "mailto:hello@franchb.com",
-    linkTitle: `Send an email to ${SITE.title}`,
+    linkTitle: `Envoyer un courriel à ${SITE.title}`,
     active: false,
   },
   {

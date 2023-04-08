@@ -1,14 +1,8 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "À propos"
 ---
 
-This is my personal blog.
+Ceci est un magazine en ligne personnel pour un programmeur qui veut apprendre le français. Les histoires personnelles ici peuvent être entrelacées avec des notes sur l'informatique, les algorithmes, les langages de programmation.
 
-I work as a lead software engineer in an enterprise project. At work I use Go programming language. Also, I'm involved in a devsecops stack where I use such things as k8s, podman, Fedora, SELinux, Gitlab/gitlab-runner/Jenkins, S3, PostgreSQL, Prometheus/Grafana/VictoriaMetrics.
-
-In my free time I learn Rust and Zig.
-
-This blog is build with NodeJS/Astro/Astro Blog theme.
-
-Feel free to contact with me via my email at [hello@franchb.com](mailto:hello@franchb.com).
+N'hésitez pas à me contacter via mon email à [hello@franchb.com](mailto:hello@franchb.com).

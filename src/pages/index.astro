@@ -23,13 +23,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Welcome</h1>
+      <h1>Accueillir</h1>
       <a
         target="_blank"
         href="/rss.xml"
         class="rss-link"
         aria-label="rss feed"
-        title="RSS Feed"
+        title="Flux RSS"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
           ><path
@@ -41,26 +41,25 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </a>
 
       <p>
-        I work as a lead software engineer in an enterprise project. At my work
-        I use Go programming language, PostgreSQL ClickHouse, JetStream,
-        RedPanda, a lot of devsecops stuff like k8s, podman, Fedora, SELinux,
-        Stackrox, Gitlab/gitlab-runner/Jenkins, Vector, S3, Prometheus, Grafana,
-        VictoriaMetrics. In my free time I learn Rust and Zig.
+        Ceci est un magazine en ligne personnel pour un programmeur qui veut
+        apprendre le français. Les histoires personnelles ici peuvent être
+        entrelacées avec des notes sur l'informatique, les algorithmes, les
+        langages de programmation.
       </p>
       <p>
-        This blog is an open-source, see
+        Ce blog est open-source, voir
         <LinkButton
           className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
           href="https://github.com/franchb/blog#readme"
         >
-          README
-        </LinkButton> for more info.
+          LISEZMOI
+        </LinkButton> pour plus d'informations.
       </p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
+            <div class="social-links">Liens sociaux:</div>
             <Socials />
           </div>
         )
@@ -73,7 +72,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>Messages en vedette</h2>
             <ul>
               {featuredPosts.map(({ data }) => (
                 <Card
@@ -90,7 +89,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     <section id="recent-posts">
-      <h2>Recent Posts</h2>
+      <h2>Messages récents</h2>
       <ul>
         {
           sortedPosts.map(
@@ -107,7 +106,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </ul>
       <div class="all-posts-btn-wrapper">
         <LinkButton href="/posts">
-          All Posts
+          Tous les messages
           <svg xmlns="http://www.w3.org/2000/svg"
             ><path
               d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
