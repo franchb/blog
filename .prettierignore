@@ -11,3 +11,5 @@
 !.prettierrc
 !.eslintrc.js
 !README.md
+
+/src/assets/images

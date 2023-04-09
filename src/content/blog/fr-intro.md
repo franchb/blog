@@ -6,7 +6,7 @@ postSlug: fr-intro
 featured: true
 draft: false
 tags:
-  - personal
+  - personnel
   - français
 description: Je commence à écrire dans ce blog en français.
 ---
