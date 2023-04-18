@@ -22,7 +22,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Github",
     href: "https://github.com/franchb",
-    linkTitle: ` ${SITE.title} on Github`,
+    linkTitle: `Mon code`,
     active: true,
   },
   // {
@@ -32,10 +32,16 @@ export const SOCIALS: SocialObjects = [
   //   active: true,
   // },
   {
+    name: "Matrix",
+    href: "https://matrix.to/#/@franchb:franchb.com",
+    linkTitle: `Je suis sur la Matrix`,
+    active: true,
+  },
+  {
     name: "Mail",
     href: "mailto:hello@franchb.com",
-    linkTitle: `Envoyer un courriel à ${SITE.title}`,
-    active: false,
+    linkTitle: `E-mail`,
+    active: true,
   },
   {
     name: "Twitter",
