@@ -11,6 +11,8 @@ export const SITE: Site = {
   postPerPage: 3,
 };
 
+export const LOCALE = ["en-EN"]; // set to [] to use the environment default
+
 export const LOGO_IMAGE = {
   enable: true,
   svg: true,
