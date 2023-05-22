@@ -12,6 +12,7 @@ import markdoc from "@astrojs/markdoc";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  compressHTML: true,
   integrations: [
     tailwind({
       config: {
