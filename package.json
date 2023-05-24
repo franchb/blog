@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.2.1",
-    "@astrojs/rss": "^2.4.2",
+    "@astrojs/rss": "^2.4.3",
     "@resvg/resvg-js": "^2.4.1",
     "astro": "^2.5.5",
     "fuse.js": "^6.6.2",
