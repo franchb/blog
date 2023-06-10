@@ -12,6 +12,12 @@ import markdoc from "@astrojs/markdoc";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  build: {
+    inlineStylesheets: "auto",
+  },
+  redirects: {
+    "/old": "/new",
+  },
   compressHTML: true,
   integrations: [
     tailwind({
@@ -25,6 +31,7 @@ export default defineConfig({
   ],
   experimental: {
     assets: true,
+    redirects: true,
   },
   markdown: {
     remarkPlugins: [
