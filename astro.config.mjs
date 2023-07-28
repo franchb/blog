@@ -11,6 +11,7 @@ import markdoc from "@astrojs/markdoc";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://astro-paper.pages.dev/", // replace this with your deployed domain
   site: SITE.website,
   build: {
     inlineStylesheets: "auto",
@@ -21,8 +22,7 @@ export default defineConfig({
   compressHTML: true,
   integrations: [
     tailwind({
-      config: {
-      },
+      config: {},
       applyBaseStyles: true,
     }),
     react(),
