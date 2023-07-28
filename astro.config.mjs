@@ -4,15 +4,14 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-import { SITE } from "./src/config";
 import markdoc from "@astrojs/markdoc";
+import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 // enable to turn on SSR -- import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-paper.pages.dev/", // replace this with your deployed domain
-  site: SITE.website,
+  site: "https://franchb.com/", // replace this with your deployed domain
   build: {
     inlineStylesheets: "auto",
   },
@@ -31,11 +30,11 @@ export default defineConfig({
   ],
   experimental: {
     assets: true,
-    redirects: true,
   },
   markdown: {
     remarkPlugins: [
       remarkToc,
+      remarkReadingTime,
       [
         remarkCollapse,
         {
