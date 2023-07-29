@@ -4,8 +4,8 @@ import og from "./assets/images/franchbcom-og.png";
 export const SITE: Site = {
   website: "https://franchb.com/",
   author: "franchb",
-  desc: "Blog personnel d'un programmeur qui va apprendre le français.",
-  title: "Blog personnel sur franchb.com",
+  desc: "Personal blog at franchb.com",
+  title: "Personal blog at franchb.com",
   ogImage: og.src,
   lightAndDarkMode: true,
   postPerPage: 3,
@@ -24,7 +24,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Github",
     href: "https://github.com/franchb",
-    linkTitle: `Mon code`,
+    linkTitle: `Me at GitHub`,
     active: true,
   },
   // {
@@ -36,7 +36,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Matrix",
     href: "https://matrix.to/#/@franchb:franchb.com",
-    linkTitle: `Je suis sur la Matrix`,
+    linkTitle: `Me at Matrix`,
     active: true,
   },
   {
