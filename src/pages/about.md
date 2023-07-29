@@ -1,10 +1,12 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "À propos"
+title: "About"
 ---
 
-Ceci est un magazine en ligne personnel pour un programmeur qui veut apprendre le français. Les histoires personnelles ici peuvent être entrelacées avec des notes sur l'informatique, les algorithmes, les langages de programmation.
+I am a software engineer now. In my past days I was a medical student and a balloon design company owner.
 
-N'hésitez pas à me contacter via mon email à [hello@franchb.com](mailto:hello@franchb.com).
+This site is a small home for my personal thoughts, notes on software engineering and programming languages.
 
-Vous pouvez me trouver là-bas sur Matrix à [@franchb:franchb.com](https://matrix.to/#/@franchb:franchb.com)
+Feel free to email me to [hello@franchb.com](mailto:hello@franchb.com).
+
+Also, you could find me at Matrix [@franchb:franchb.com](https://matrix.to/#/@franchb:franchb.com)

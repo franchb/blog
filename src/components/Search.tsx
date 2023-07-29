@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import Card from "@components/Card";
 import slugify from "@utils/slugify";
 import type { BlogFrontmatter } from "@content/_schemas";
-import React from "react";
+import type React from "react";
 
 export type SearchItem = {
   title: string;
@@ -87,7 +87,7 @@ export default function SearchBar({ searchList }: Props) {
         border-opacity-40 bg-skin-fill py-3 pl-10
         pr-3 placeholder:italic placeholder:text-opacity-75
         focus:border-skin-accent focus:outline-none"
-          placeholder="Rechercher n'importe quoi..."
+          placeholder="Search for anything..."
           type="text"
           name="search"
           value={inputVal}
@@ -102,8 +102,8 @@ export default function SearchBar({ searchList }: Props) {
         <div className="mt-8">
           Found {searchResults?.length}
           {searchResults?.length && searchResults?.length === 1
-            ? " résultat"
-            : " résultats"}{" "}
+            ? " result"
+            : " results"}{" "}
           for '{inputVal}'
         </div>
       )}

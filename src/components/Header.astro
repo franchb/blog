@@ -59,17 +59,17 @@ const { activeNav } = Astro.props;
         <ul id="menu-items" class="display-none sm:flex">
           <li>
             <a href="/posts" class={activeNav === "posts" ? "active" : ""}>
-              Des postes
+              Posts
             </a>
           </li>
           <li>
             <a href="/tags" class={activeNav === "tags" ? "active" : ""}>
-              Mots clés
+              Tags
             </a>
           </li>
           <li>
             <a href="/about" class={activeNav === "about" ? "active" : ""}>
-              À propos
+              About
             </a>
           </li>
           <li>
@@ -96,7 +96,7 @@ const { activeNav } = Astro.props;
                 <button
                   id="theme-btn"
                   class="focus-outline"
-                  title="Bascule clair et foncé"
+                  title="Toggles light & dark"
                   aria-label="auto"
                   aria-live="polite"
                 >

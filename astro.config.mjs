@@ -5,7 +5,7 @@ import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import markdoc from "@astrojs/markdoc";
-import { remarkReadingTime } from "@utils/remark-reading-time.mjs";
+import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 // enable to turn on SSR -- import cloudflare from "@astrojs/cloudflare";
 

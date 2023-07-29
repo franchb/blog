@@ -23,30 +23,28 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Accueillir</h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="Flux RSS"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-      </a>
+      <!--       <h1>Accueillir</h1>
+           <a
+              target="_blank"
+              href="/rss.xml"
+              class="rss-link"
+              aria-label="rss feed"
+              title="Flux RSS"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+                ><path
+                  d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+                ></path><path
+                  d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+                ></path><circle cx="6" cy="18" r="2"></circle>
+              </svg>
+            </a>-->
 
       <p>
-        Ceci est un magazine en ligne personnel pour un programmeur qui veut
-        apprendre le français. Les histoires personnelles ici peuvent être
-        entrelacées avec des notes sur l'informatique, les algorithmes, les
-        langages de programmation.
+        A home for personal thoughts, notes on software engineering and
+        programming languages.
       </p>
-      <p>
+      <!--      <p>
         Ce blog est open-source, voir
         <LinkButton
           className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
@@ -54,12 +52,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         >
           LISEZMOI
         </LinkButton> pour plus d'informations.
-      </p>
+      </p>-->
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Liens sociaux:</div>
+            <div class="social-links">Social links:</div>
             <Socials />
           </div>
         )
@@ -89,7 +87,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     <section id="recent-posts">
-      <h2>Messages récents</h2>
+      <h2>Recent posts</h2>
       <ul>
         {
           sortedPosts.map(
@@ -106,7 +104,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </ul>
       <div class="all-posts-btn-wrapper">
         <LinkButton href="/posts">
-          Tous les messages
+          More posts
           <svg xmlns="http://www.w3.org/2000/svg"
             ><path
               d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
