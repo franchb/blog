@@ -16,12 +16,12 @@ const { activeNav } = Astro.props;
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo">
+      <a href="/" class="logo whitespace-nowrap">
         {
           LOGO_IMAGE.enable ? (
             <img
-              src={logoSVG.src}
-              alt="franchb.com"
+              src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
+              alt={SITE.title}
               width={LOGO_IMAGE.width}
               height={LOGO_IMAGE.height}
             />
@@ -77,9 +77,9 @@ const { activeNav } = Astro.props;
               href="/search"
               className={`focus-outline p-3 sm:p-1 ${
                 activeNav === "search" ? "active" : ""
-              }`}
+              } flex`}
               ariaLabel="search"
-              title="Recherche"
+              title="Search"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +138,7 @@ const { activeNav } = Astro.props;
   }
 
   nav {
-    @apply flex w-full flex-col items-center bg-skin-fill sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
+    @apply flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
   }
   nav ul {
     @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
@@ -191,19 +191,26 @@ const { activeNav } = Astro.props;
 </style>
 
 <script>
-  // Toggle menu
-  const menuBtn = document.querySelector(".hamburger-menu");
-  const menuIcon = document.querySelector(".menu-icon");
-  const menuItems = document.querySelector("#menu-items");
+  function toggleNav() {
+    // Toggle menu
+    const menuBtn = document.querySelector(".hamburger-menu");
+    const menuIcon = document.querySelector(".menu-icon");
+    const menuItems = document.querySelector("#menu-items");
 
-  menuBtn?.addEventListener("click", () => {
-    const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-    menuIcon?.classList.toggle("is-active");
-    menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
-    menuBtn.setAttribute(
-      "aria-label",
-      menuExpanded ? "Open Menu" : "Close Menu"
-    );
-    menuItems?.classList.toggle("display-none");
-  });
+    menuBtn?.addEventListener("click", () => {
+      const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+      menuIcon?.classList.toggle("is-active");
+      menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
+      menuBtn.setAttribute(
+        "aria-label",
+        menuExpanded ? "Open Menu" : "Close Menu"
+      );
+      menuItems?.classList.toggle("display-none");
+    });
+  }
+
+  toggleNav();
+
+  // Runs on view transitions navigation
+  document.addEventListener("astro:after-swap", toggleNav);
 </script>
