@@ -11,26 +11,21 @@ import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://franchb.com/", // replace this with your deployed domain
+  site: "https://franchb.com/",
   build: {
     inlineStylesheets: "auto",
   },
   redirects: {
     "/old": "/new",
   },
-  compressHTML: true,
   integrations: [
     tailwind({
-      config: {},
-      applyBaseStyles: true,
+      applyBaseStyles: false,
     }),
     react(),
     sitemap(),
     markdoc(),
   ],
-  experimental: {
-    assets: true,
-  },
   markdown: {
     remarkPlugins: [
       remarkToc,
@@ -56,4 +51,5 @@ export default defineConfig({
   // In order to enable Cloudflare SSR/Functions see https://github.com/satnaing/astro-paper/issues/44
   // output: "server",
   // TODO: switch to a directory mode for Sentry adapter: cloudflare({ mode: "directory" }),
+  scopedStyleStrategy: "where",
 });
