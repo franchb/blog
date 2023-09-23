@@ -30,7 +30,7 @@
   }
   body {
     @apply flex min-h-screen flex-col bg-skin-fill font-mono text-skin-base 
-    transition-colors selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
+    selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
   }
   section,
   footer {
@@ -115,9 +115,13 @@
     @apply bg-skin-card-muted;
   }
 
-  code {
+  code,
+  blockquote {
+    word-wrap: break-word;
+  }
+
+  pre > code {
     white-space: pre;
-    overflow: scroll;
   }
 }
 
@@ -127,17 +131,5 @@
   }
   .focus-outline {
     @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
-  }
-
-  /* Card */
-  .list-card {
-    @apply my-6;
-  }
-  .list-card > a {
-    @apply inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0;
-  }
-  .list-card h2,
-  .list-card h3 {
-    @apply text-lg font-medium decoration-dashed hover:underline;
   }
 }
