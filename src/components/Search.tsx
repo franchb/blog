@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import Card from "@components/Card";
 import slugify from "@utils/slugify";
 import type { CollectionEntry } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 import type React from "react";
 
 export type SearchItem = {
