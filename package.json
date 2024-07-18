@@ -16,7 +16,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
+    "@astrojs/check": "^0.8.2",
     "@astrojs/markdoc": "^0.11.1",
     "@astrojs/rss": "^4.0.7",
     "@eslint/eslintrc": "^3.1.0",
