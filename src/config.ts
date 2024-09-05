@@ -4,10 +4,12 @@ import og from "./assets/images/franchbcom-og.png";
 export const SITE: Site = {
   website: "https://franchb.com/",
   author: "franchb",
+  profile: "https://satnaing.dev/",
   desc: "Personal blog at franchb.com",
   title: "Personal blog at franchb.com",
   ogImage: og.src,
   lightAndDarkMode: true,
+  postPerIndex: 4,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };

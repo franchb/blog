@@ -49,10 +49,6 @@ const layoutProps = {
 <Layout {...layoutProps}>
   <Header />
 
-  <!-- <div class="progress-container fixed top-0 z-10 h-1 w-full bg-skin-fill">
-    <div class="progress-bar h-1 w-0 bg-skin-accent" id="myBar"></div>
-  </div> -->
-
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
     <button
       class="focus-outline mb-2 mt-8 flex hover:opacity-75"
@@ -73,7 +69,7 @@ const layoutProps = {
       size="lg"
       className="my-2"
     />
-    <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
+    <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
 
@@ -154,14 +150,20 @@ const layoutProps = {
   /** Attaches links to headings in the document,
    *  allowing sharing of sections easily */
   function addHeadingLinks() {
-    let headings = Array.from(document.querySelectorAll("h2, h3, h4, h5, h6"));
-    for (let heading of headings) {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
       heading.classList.add("group");
-      let link = document.createElement("a");
-      link.innerText = "#";
-      link.className = "heading-link hidden group-hover:inline-block ml-2";
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ml-2 opacity-0 group-hover:opacity-100 focus:opacity-100";
       link.href = "#" + heading.id;
-      link.ariaHidden = "true";
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
       heading.appendChild(link);
     }
   }
@@ -170,14 +172,14 @@ const layoutProps = {
   /** Attaches copy buttons to code blocks in the document,
    * allowing users to copy code easily. */
   function attachCopyButtons() {
-    let copyButtonLabel = "Copy";
-    let codeBlocks = Array.from(document.querySelectorAll("pre"));
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
-    for (let codeBlock of codeBlocks) {
-      let wrapper = document.createElement("div");
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
 
-      let copyButton = document.createElement("button");
+      const copyButton = document.createElement("button");
       copyButton.className =
         "copy-code absolute right-3 -top-3 rounded bg-skin-card px-2 py-1 text-xs leading-4 text-skin-base font-medium";
       copyButton.innerHTML = copyButtonLabel;
@@ -194,8 +196,8 @@ const layoutProps = {
     }
 
     async function copyCode(block, button) {
-      let code = block.querySelector("code");
-      let text = code?.innerText;
+      const code = block.querySelector("code");
+      const text = code?.innerText;
 
       await navigator.clipboard.writeText(text ?? "");
 

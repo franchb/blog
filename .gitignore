@@ -23,9 +23,6 @@ pnpm-debug.log*
 # ignore .astro directory
 .astro
 
-# ignore Jampack cache files
-.jampack/
-
 # yarn
 .yarn/*
 !.yarn/patches
