@@ -1,51 +1,44 @@
-import globals from "globals";
-import parser from "astro-eslint-parser";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import astroParser from "astro-eslint-parser";
+import eslintPluginAstro from "eslint-plugin-astro";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
-
-export default [{
-    ignores: [
-        "**/.husky",
-        "**/.vscode",
-        "**/node_modules",
-        "**/public",
-        "**/dist",
-        "**/.yarn",
-        "**/.astro"
-    ],
-}, ...compat.extends("eslint:recommended", "plugin:astro/recommended"), {
+export default [
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...eslintPluginAstro.configs.recommended,
+  {
     languageOptions: {
-        globals: {
-            ...globals.node,
-            ...globals.browser
-        },
-
-        ecmaVersion: "latest",
-        sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
     },
-}, {
-    files: ["**/*.astro"],
-
+  },
+  {
+    files: ["*.astro"],
     languageOptions: {
-        parser: parser,
-        ecmaVersion: 5,
-        sourceType: "script",
-
-        parserOptions: {
-            parser: "@typescript-eslint/parser",
-            extraFileExtensions: [".astro"],
-        },
+      parser: astroParser,
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"],
+      },
     },
-
-    rules: {},
-}];
+  },
+  {
+    files: ["tailwind.config.cjs", "**/*.d.ts"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/triple-slash-reference": "off",
+    },
+  },
+  {
+    rules: {
+      "@typescript-eslint/no-unused-expressions": "off",
+    },
+  },
+  {
+    ignores: ["dist/**", ".astro"],
+  },
+];

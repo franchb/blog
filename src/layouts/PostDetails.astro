@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Comments from "@components/Comments";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
@@ -46,6 +47,7 @@ const layoutProps = {
 };
 ---
 
+<!-- eslint-disable astro/missing-client-only-directive-value -->
 <Layout {...layoutProps}>
   <Header />
 
@@ -94,6 +96,8 @@ const layoutProps = {
 
       <ShareLinks />
     </div>
+
+    <Comments client:only />
   </main>
   <Footer />
 </Layout>

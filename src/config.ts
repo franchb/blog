@@ -1,10 +1,12 @@
 import type { Site, SocialObjects } from "./types";
 import og from "./assets/images/franchbcom-og.png";
 
+import type { GiscusProps } from "@giscus/react";
+
 export const SITE: Site = {
   website: "https://franchb.com/",
   author: "franchb",
-  profile: "https://satnaing.dev/",
+  profile: "https://franchb.com/",
   desc: "Personal blog at franchb.com",
   title: "Personal blog at franchb.com",
   ogImage: og.src,
@@ -58,30 +60,6 @@ export const SOCIALS: SocialObjects = [
     active: false,
   },
   {
-    name: "YouTube",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on YouTube`,
-    active: false,
-  },
-  {
-    name: "WhatsApp",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on WhatsApp`,
-    active: false,
-  },
-  {
-    name: "Pinterest",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Pinterest`,
-    active: false,
-  },
-  {
-    name: "CodePen",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on CodePen`,
-    active: false,
-  },
-  {
     name: "Discord",
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on Discord`,
@@ -94,27 +72,22 @@ export const SOCIALS: SocialObjects = [
     active: false,
   },
   {
-    name: "Reddit",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Reddit`,
-    active: false,
-  },
-  {
-    name: "Skype",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Skype`,
-    active: false,
-  },
-  {
-    name: "Telegram",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Telegram`,
-    active: false,
-  },
-  {
     name: "Mastodon",
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on Mastodon`,
     active: false,
   },
 ];
+
+export const GISCUS: GiscusProps = {
+  repo: "franchb/blog",
+  repoId: "R_kgDOJHBtBA",
+  category: "Announcements",
+  categoryId: "DIC_kwDOJHBtBM4CiNsd",
+  mapping: "pathname",
+  reactionsEnabled: "0",
+  emitMetadata: "0",
+  inputPosition: "bottom",
+  lang: "en",
+  loading: "lazy",
+};
