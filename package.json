@@ -22,7 +22,7 @@
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.6.0",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^4.16.3",
+    "astro": "^5.1.7",
     "fuse.js": "^7.0.0",
     "github-slugger": "^2.0.0",
     "globals": "^15.8.0",
