@@ -1,5 +1,6 @@
 {
-  "name": "astro-paper",
+  "name": "franchbdotcom",
+  "private": true,
   "type": "module",
   "version": "5.5.1",
   "scripts": {
