@@ -2,6 +2,7 @@
   "name": "franchbdotcom",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.29.3",
   "version": "5.5.1",
   "scripts": {
     "dev": "astro dev",
