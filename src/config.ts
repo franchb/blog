@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://franchb.com/",
+  author: "franchb",
+  profile: "https://franchb.com/",
+  desc: "Personal blog at franchb.com",
+  title: "Personal blog at franchb.com",
+  ogImage: "franchbcom-og.png",
+  lightAndDarkMode: true,
+  postPerIndex: 4,
+  postPerPage: 3,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: false,
+    text: "Edit page",
+    url: "https://github.com/franchb/blog/edit/main/",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "en",
+  timezone: "Europe/Moscow",
+} as const;
