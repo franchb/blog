@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22]
 
     steps:
       - name: "☁️ Checkout repository"
@@ -29,7 +29,7 @@ jobs:
       - name: "📦 Install pnpm"
         uses: pnpm/action-setup@v4
         with:
-          version: 10.11.1
+          version: 10.29.3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
