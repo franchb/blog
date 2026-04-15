@@ -1,7 +1,7 @@
 ---
 title: "Building a Claude Code Skill Plugin from Scratch"
 author: franchb
-pubDatetime: 2026-04-15T12:00:00Z
+pubDatetime: 2026-04-15T08:00:00Z
 featured: true
 draft: false
 tags:
