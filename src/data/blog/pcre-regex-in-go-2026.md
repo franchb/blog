@@ -119,14 +119,14 @@ The `ccgo`-based path — [`go.elara.ws/pcre`](https://gitea.elara.ws/Elara6331/
 
 The trade-offs collapse to the following table. Verdicts are short by design — this is a triage tool, not a benchmark report.
 
-| Approach | Pure-Go | Cross-compile | PCRE coverage | Runtime cost | Ops | Supply chain |
-| --- | --- | --- | --- | --- | --- | --- |
-| `dlclark/regexp2` | yes | yes | partial (no \K/(?R)/callouts) | timeout-bounded, ~tiny | trivial; active (1.2k★) | 1 SBOM line |
-| `wasilibs` WASM + wazero | yes | yes | full PCRE2 | 3–10× slower, +1–3 MB | moderate; active | WASM blob, signed |
-| `wasm2go` | yes | yes | full PCRE2 | ~PCRE2 JIT-off, +1–3 MB | heavy transpile; 1 maintainer | C → WASM → Go (long) |
-| cgo bindings | no | via cgo | full PCRE2 (with JIT) | best (native + JIT), +0.5–1 MB | C toolchain; active | C in your tree |
-| Rust bindings | no | via cgo | Rust flavor — different | best (RE2-class), +0.5–1 MB | Rust + cgo; active | Rust + C in tree |
-| ccgo PCRE2 | yes | yes | full PCRE2 | ~PCRE2 JIT-off, +0.5–1 MB | heavy transpile; 1 maintainer | C → ccgo → Go (long) |
+| Approach                 | Pure-Go | Cross-compile | PCRE coverage                     | Runtime cost                   | Ops                           | Supply chain         |
+| ------------------------ | ------- | ------------- | --------------------------------- | ------------------------------ | ----------------------------- | -------------------- |
+| `dlclark/regexp2`        | yes     | yes           | partial (no `\K`/`(?R)`/callouts) | timeout-bounded, ~tiny         | trivial; active (1.2k stars)  | 1 SBOM line          |
+| `wasilibs` WASM + wazero | yes     | yes           | full PCRE2                        | 3–10× slower, +1–3 MB          | moderate; active              | WASM blob, signed    |
+| `wasm2go`                | yes     | yes           | full PCRE2                        | ~PCRE2 JIT-off, +1–3 MB        | heavy transpile; 1 maintainer | C → WASM → Go (long) |
+| cgo bindings             | no      | via cgo       | full PCRE2 (with JIT)             | best (native + JIT), +0.5–1 MB | C toolchain; active           | C in your tree       |
+| Rust bindings            | no      | via cgo       | Rust flavor — different           | best (RE2-class), +0.5–1 MB    | Rust + cgo; active            | Rust + C in tree     |
+| ccgo PCRE2               | yes     | yes           | full PCRE2                        | ~PCRE2 JIT-off, +0.5–1 MB      | heavy transpile; 1 maintainer | C → ccgo → Go (long) |
 
 The matrix shows why the verdict from the short answer holds. Only three rows are simultaneously pure-Go and cross-compile-clean, and of those three, exactly one has both an active maintainer community and a trivial integration story — `dlclark/regexp2`. The two transpilation paths (`wasm2go` and `ccgo`) trade a long, single-maintainer supply chain for full PCRE2 flavor, which is a defensible trade in narrow circumstances and a hard sell as a default. Everything else either gives up pure-Go or gives up PCRE2.
 
@@ -191,4 +191,3 @@ The single most important input to this decision is not a benchmark. It is revea
 - [ncruces/go-sqlite3](https://github.com/ncruces/go-sqlite3) — wasm2go's flagship consumer
 - [SLSA](https://slsa.dev/) — Supply-chain Levels for Software Artifacts
 - [Sigstore Cosign](https://github.com/sigstore/cosign) — signing and verification for OCI artifacts and Wasm
-
