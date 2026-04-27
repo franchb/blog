@@ -27,7 +27,7 @@
     "satori": "^0.26.0",
     "sharp": "^0.34.5",
     "slugify": "^1.6.9",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
