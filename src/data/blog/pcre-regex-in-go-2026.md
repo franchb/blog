@@ -100,15 +100,15 @@ re.MatchTimeout = 100 * time.Millisecond  // do not skip this
 
 ## Decision matrix
 
-| Approach                                  | Pure-Go | Cross-compile  | PCRE feature coverage            | Perf vs native PCRE2-JIT                | Binary size         | Build complexity           | Maintenance                     | Supply chain                    |
-| ----------------------------------------- | ------- | -------------- | -------------------------------- | --------------------------------------- | ------------------- | -------------------------- | ------------------------------- | ------------------------------- |
-| **dlclark/regexp2**                       | Yes     | Full           | ~95% (no `\K`, `(?R)`, callouts) | ~10–50× slower; +3–10× with `regexp2cg` | Small               | Trivial                    | Low (one maintainer)            | **Best** — 1 SBOM line          |
-| **WASM blob + wazero (wasilibs pattern)** | Yes     | Full           | 100% PCRE2                       | ~3–10× slower (no JIT)                  | +400–700 kB Wasm    | High (emcc/wasi-sdk in CI) | Medium — you maintain the build | Good — sign `.wasm` and binary  |
-| **wasm2go-transpiled PCRE2**              | Yes     | Full           | 100% PCRE2                       | ~3–10× slower + transpile overhead      | Large generated .go | Very high                  | High — bus factor = 1           | Awkward — long provenance chain |
-| **cgo → system PCRE2**                    | **No**  | Broken         | 100% + JIT                       | Baseline (fastest)                      | Small               | Medium                     | Low (upstream handles it)       | Fails distroless                |
-| **modernc.org/libpcre2 (ccgo)**           | Yes     | Per-arch regen | 100% PCRE2                       | ~2–5× slower (no JIT)                   | Large               | High                       | Medium                          | Opaque generated Go             |
-| **Go stdlib regexp (RE2)**                | Yes     | Full           | RE2 only                         | Fast, linear-time                       | Zero                | None                       | None                            | Best                            |
-| **wasilibs/go-re2**                       | Yes     | Full           | RE2 only                         | Fast on large inputs                    | +re2.wasm           | None (just import)         | None                            | Excellent                       |
+| Approach                                  | Pure-Go | Cross-compile  | PCRE feature coverage            | Perf vs native PCRE2-JIT                      | Binary size         | Build complexity           | Maintenance                     | Supply chain                    |
+| ----------------------------------------- | ------- | -------------- | -------------------------------- | --------------------------------------------- | ------------------- | -------------------------- | ------------------------------- | ------------------------------- |
+| **dlclark/regexp2**                       | Yes     | Full           | ~95% (no `\K`, `(?R)`, callouts) | ~10–50× slower; 3–10× faster with `regexp2cg` | Small               | Trivial                    | Low (one maintainer)            | **Best** — 1 SBOM line          |
+| **WASM blob + wazero (wasilibs pattern)** | Yes     | Full           | 100% PCRE2                       | ~3–10× slower (no JIT)                        | +400–700 kB Wasm    | High (emcc/wasi-sdk in CI) | Medium — you maintain the build | Good — sign `.wasm` and binary  |
+| **wasm2go-transpiled PCRE2**              | Yes     | Full           | 100% PCRE2                       | ~3–10× slower + transpile overhead            | Large generated .go | Very high                  | High — bus factor = 1           | Awkward — long provenance chain |
+| **cgo → system PCRE2**                    | **No**  | Broken         | 100% + JIT                       | Baseline (fastest)                            | Small               | Medium                     | Low (upstream handles it)       | Fails distroless                |
+| **modernc.org/libpcre2 (ccgo)**           | Yes     | Per-arch regen | 100% PCRE2                       | ~2–5× slower (no JIT)                         | Large               | High                       | Medium                          | Opaque generated Go             |
+| **Go stdlib regexp (RE2)**                | Yes     | Full           | RE2 only                         | Fast, linear-time                             | Zero                | None                       | None                            | Best                            |
+| **wasilibs/go-re2**                       | Yes     | Full           | RE2 only                         | Fast on large inputs                          | +re2.wasm           | None (just import)         | None                            | Excellent                       |
 
 ## Supply-chain posture under SLSA and distroless
 
@@ -150,6 +150,6 @@ The practical takeaway is unglamorous: **most Go shops that think they need PCRE
 - [OWASP Coraza](https://github.com/corazawaf/coraza) — the WAF that walked away from PCRE in v3
 - [PCRE2](https://github.com/PCRE2Project/pcre2) — the upstream library, currently at 10.47
 - [`wazero`](https://github.com/tetratelabs/wazero) — the pure-Go Wasm runtime
-- [`go.elara.ws/pcre`](https://gitea.elara.ws/Elara6331/pcre) and [`modernc.org/libpcre2`](https://gitlab.com/cznic/libpcre2) — the ccgo-transpiled curiosities
+- [`go.elara.ws/pcre`](https://gitea.elara.ws/Elara6331/pcre) and [`modernc.org/libpcre2-8/-16/-32`](https://gitlab.com/cznic/libpcre2) — the ccgo-transpiled curiosities
 - [SLSA](https://slsa.dev) — Supply-chain Levels for Software Artifacts
 - [Sigstore Cosign](https://github.com/sigstore/cosign) — artifact signing, with first-class Wasm support
