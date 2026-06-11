@@ -10,9 +10,12 @@ tags:
   - lean
   - reasoning
 description: "An a-fortiori argument is exactly a claim that some predicate is monotone along an order — and 'my a-fortiori reasoning was wrong' means one of three precise assumptions failed."
+ogImage: ../../assets/images/a-fortiori.png
 ---
 
 I ran into this phrase in a Claude Code session. We were planning a feature with genuinely high cognitive complexity, and at one point Claude said "my a-fortiori reasoning was wrong" — and it bothered me, because I couldn't immediately say what had actually been claimed. "A fortiori" is one of those phrases you deploy by feel — it _sounds_ like the conclusion is now beyond dispute. So I went back and made the structure precise, and the precise version turns out to be a single, familiar property: monotonicity. A fortiori is monotonicity reasoning wearing a Latin name.
+
+![A toga-clad teacher at a blackboard points to steps labelled A, B, C with φ(A), φ(B), φ(C) rising under "a ≤ b" and "Monotone φ", a Lean snippet ending in "exact hφ h", and a "Careful!" panel showing the inference failing without the right order or monotonicity — with candle, forge, 50 kg ≤ 100 kg, and seedling ≤ plant examples below.](../../assets/images/a-fortiori.png)
 
 ## Table of contents
 
