@@ -12,7 +12,7 @@ tags:
 description: "An a-fortiori argument is exactly a claim that some predicate is monotone along an order — and 'my a-fortiori reasoning was wrong' means one of three precise assumptions failed."
 ---
 
-The other day I caught myself writing the sentence "my a-fortiori reasoning was wrong." I meant it as an apology, but it bothered me, because I couldn't immediately say what I had actually claimed. "A fortiori" is one of those phrases you deploy by feel — it _sounds_ like the conclusion is now beyond dispute. So I went back and made the structure precise, and the precise version turns out to be a single, familiar property: monotonicity. A fortiori is monotonicity reasoning wearing a Latin name.
+I ran into this phrase in a Claude Code session. We were planning a feature with genuinely high cognitive complexity, and at one point Claude said "my a-fortiori reasoning was wrong" — and it bothered me, because I couldn't immediately say what had actually been claimed. "A fortiori" is one of those phrases you deploy by feel — it _sounds_ like the conclusion is now beyond dispute. So I went back and made the structure precise, and the precise version turns out to be a single, familiar property: monotonicity. A fortiori is monotonicity reasoning wearing a Latin name.
 
 ## Table of contents
 
