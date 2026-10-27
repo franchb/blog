@@ -1,0 +1,34 @@
+# Settings for lychee, the link checker run by .github/workflows/link-check.yml.
+# Reference: https://github.com/lycheeverse/lychee/blob/lychee-v0.24.2/lychee.example.toml
+
+# Check web links only; local images and pages are already checked by `astro build`.
+scheme = ["https", "http"]
+
+# Be patient and polite: few parallel requests per host, a few retries.
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+max_concurrency = 8
+host_concurrency = 2
+host_request_interval = "500ms"
+
+# 429 means "slow down", not "broken".
+accept = ["200..=299", "429"]
+
+# An honest, descriptive user agent (Wikimedia asks for one).
+user_agent = "Mozilla/5.0 (compatible; franchb-blog-linkcheck/1.0; +https://franchb.com)"
+
+# For links that break, suggest a Wayback Machine snapshot in the report.
+archive = "wayback"
+suggest = true
+
+# Hosts that reject automated checks even when the page is fine go here, with a reason.
+# These links are not monitored, so check them by hand now and then.
+exclude = [
+  # WorldCat answers 403 to automated clients.
+  '^https://(search\.|www\.)?worldcat\.org/',
+  # Russian state cultural portal; requests from GitHub's runners time out.
+  '^https://(www\.)?culture\.ru/',
+  # Connections from GitHub's runners fail (site may be down); essay source [7].
+  '^https://(www\.)?tarkovskybergman\.com/',
+]
