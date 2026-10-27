@@ -29,6 +29,7 @@ exclude = [
   '^https://(search\.|www\.)?worldcat\.org/',
   # Russian state cultural portal; requests from GitHub's runners time out.
   '^https://(www\.)?culture\.ru/',
-  # Connections from GitHub's runners fail (site may be down); essay source [7].
+  # Essay source [7]: connections from GitHub's runners fail, and the site answered 503
+  # to a browser in October 2026. The essay links an archived copy alongside it.
   '^https://(www\.)?tarkovskybergman\.com/',
 ]

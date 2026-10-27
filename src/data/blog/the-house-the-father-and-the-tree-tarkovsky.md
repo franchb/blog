@@ -173,7 +173,7 @@ These differences are the measure of Tarkovsky's reach. Influence matters most w
 
 I would follow this sequence to study the lineage rather than merely assemble a list of slow films:
 
-1. **Chris Marker, _One Day in the Life of Andrei Arsenevich_ (1999).** The filmmaker, his work, and his last years, beginning with the reunion with his son.
+1. **Chris Marker, _One Day in the Life of Andrei Arsenevich_ (2000).** The filmmaker, his work, and his last years, beginning with the reunion with his son.
 2. **Ingmar Bergman, _Winter Light_ (1963).** The silence of God before _The Sacrifice_.
 3. **Andrei Tarkovsky, _Mirror_ (1975).** How an individual remembers a century.
 4. **Terrence Malick, _The Tree of Life_ (2011).** The family and the universe in one visual thought.
@@ -208,7 +208,7 @@ Complement with [_Directed by Andrei Tarkovsky_](https://jonathanrosenbaum.net/?
 4. [UPI, report from Tarkovsky's Milan press conference (10 July 1984)](https://www.upi.com/Archives/1984/07/10/Award-winning-Soviet-director-Andrei-Tarkovsky-said-today-he-has/3817458280000/).
 5. [Eye for Film, interview with Béla Tarr about _The Turin Horse_ (2011)](https://www.eyeforfilm.co.uk/feature/2011-06-21-interview-with-bela-tarr-about-turin-horse-feature-story-by-chris).
 6. [Eye Filmmuseum, _Mirror_ in the film programme accompanying its Nuri Bilge Ceylan exhibition](https://www.eyefilm.nl/en/whats-on/the-mirror/1377550).
-7. [Tarkovsky & Bergman, "Sweden: Gotland island"](https://tarkovskybergman.com/photo-essays/sweden-gotland-island/) (quotes Bergman's 2007 interview).
+7. [Tarkovsky & Bergman, "Sweden: Gotland island"](https://tarkovskybergman.com/photo-essays/sweden-gotland-island/) (quotes Bergman's 2007 interview; [archived copy](https://web.archive.org/web/2026/https://tarkovskybergman.com/photo-essays/sweden-gotland-island/)).
 8. [Alex Nemser and Nariman Skakov, English translations of the Arseny Tarkovsky poems in Andrei Tarkovsky's films, Nostalghia.com](https://www.nostalghia.com/TheTopics/Tarkovsky_Poems.html) (first published in Nathan Dunne, ed., _Tarkovsky_, Black Dog Publishing, 2008).
 
 For first-person materials: Tarkovsky's _Sculpting in Time_ and [_Time Within Time_](https://www.worldcat.org/title/25088374) (his diaries). For a family perspective, Marina Tarkovskaya's [_Oskolki zerkala_](https://search.worldcat.org/search?q=%22Oskolki+zerkala%22) (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
