@@ -17,6 +17,13 @@ I started with a question about Andrei Tarkovsky's _The Sacrifice_. Then I wonde
 
 The connecting idea is **inheritance**. What can one generation leave another when homes burn, nations change, families separate, and even memory is unreliable?
 
+<figure>
+
+![Black-and-white photograph of Andrei Tarkovsky in a knitted bobble hat and a sheepskin-collared jacket, standing in a Moscow street lined with old apartment buildings.](../../assets/images/tarkovsky/tarkovsky-moscow-1980-baldin.jpg)
+
+<figcaption>Andrei Tarkovsky in Moscow, autumn 1980. The photographer's note on the envelope says he was scouting locations for <em>Nostalghia</em>; the street is near the Donskoy Monastery or on 1st Shchipkovsky Lane, where Tarkovsky grew up. Photo: Boris Baldin, CC BY-SA 4.0.</figcaption>
+</figure>
+
 This is a journey through films and history, not a claim to have decoded the director's symbols. Where an artistic influence is documented, I say so; where I am making a comparison, I treat it as a comparison.
 
 ## Table of contents
@@ -26,6 +33,13 @@ This is a journey through films and history, not a claim to have decoded the dir
 A father and his young son plant a dead tree. The father tells a story about an old monk, Pamve, who planted a barren tree on a hillside and told his young disciple to water it every day until it came back to life. The disciple obeyed without knowing whether it would ever matter, and after three years the tree revived. This seemingly futile action will return at the end of Tarkovsky's final film.
 
 The father, Alexander, is a former actor and intellectual living with his family on a Swedish island. During his birthday celebration, news arrives of what seems to be a nuclear catastrophe. In fear, Alexander makes a promise to God: if the disaster is averted, he will give up everything—home, family, possessions, speech. The enigmatic postman Otto suggests that Alexander visit Maria, a woman said to have extraordinary powers. The next morning the world appears normal again. Alexander burns his house to fulfill his vow.
+
+<figure>
+
+![A flat, open heath on Närsholmen, Gotland: dry grass and a few wind-bent trees under a wide, cloudy sky, with the sea a thin line on the horizon.](../../assets/images/tarkovsky/narsholmen-gotland.jpg)
+
+<figcaption>Närsholmen, a peninsula on Gotland, where the exteriors of <em>The Sacrifice</em> were filmed. Photo: Måns Hagberg, CC BY-SA 4.0.</figcaption>
+</figure>
 
 It is tempting to demand an answer: did prayer work? Did Maria save the world? Was the catastrophe a vision, or was Alexander experiencing a psychological crisis? Tarkovsky refuses a definitive explanation. The uncertainty is the film's moral terrain.
 
@@ -55,9 +69,23 @@ That history complicates any simplistic portrait of a family eternally opposed t
 
 Arseny's older brother Valery became involved in revolutionary politics and died in 1919 amid fighting against forces associated with Nykyfor Hryhoriv in Ukraine [2]. Arseny was a child when this happened.
 
+<figure>
+
+![A black-and-white studio photograph: a woman in a large feathered hat sits between two boys in straw hats on a carved stone balustrade, in front of a painted woodland backdrop. The older boy is on the left; the small boy on the right is Arseny. The studio's imprint runs along the bottom of the card.](../../assets/images/tarkovsky/arseny-tarkovsky-1911-bril.jpg)
+
+<figcaption>Arseny Tarkovsky (right), aged about four, with his mother and his older brother. Elisavetgrad, 1911. Photo: Israel Bril, public domain.</figcaption>
+</figure>
+
 A later biographical account describes an extraordinary episode in **1921**: Arseny and friends published an anti-Lenin acrostic, were arrested, and he escaped while being transported for trial [2]. The incident is widely retold, but not every dramatic detail can be checked against accessible contemporary documents; it should be read with that qualification.
 
 Arseny became a poet and translator in Soviet Russia, served as a war correspondent during World War II, was severely wounded, and lost a leg. Remarkably, his first collection of original poems was published only in 1962, the year his son released his first feature film, _Ivan's Childhood_. Nick James, writing in the BFI's _Sight and Sound_, treats the father's poetry as a central influence on the son's cinema: Andrei used seven of Arseny's poems across _Mirror_, _Stalker_ and _Nostalghia_ [3].
+
+<figure>
+
+![A 2007 Russian souvenir sheet with two sepia stamps side by side, Arseny Tarkovsky (1907–1989) and Andrei Tarkovsky (1932–1986), over a faint clock face and a strip of film. Below them, a line of Arseny's verse in Russian.](../../assets/images/tarkovsky/tarkovsky-stamps-2007.jpg)
+
+<figcaption>Father and son on one sheet: Russian stamps issued in 2007, a hundred years after Arseny's birth and seventy-five after Andrei's. The margin quotes Arseny: «Не надо мне числа: / Я был, и есть, и буду…», "I have no need of dates: I was, and am, and will be" (my translation). Public domain.</figcaption>
+</figure>
 
 For the maternal family's precise experience in 1917–1921, the widely available biographical record is much thinner. I would rather leave that uncertainty visible than construct an unsupported narrative of confiscations or persecution.
 
@@ -84,6 +112,13 @@ On **10 July 1984**, at a press conference in Milan, he announced his decision n
 Calling this simply a political defection misses its personal and artistic dimensions. He wanted to make films and to be with his family. Instead, obtaining freedom to work abroad meant losing an ordinary home life in Russia.
 
 _Nostalghia_, completed before the public break, now feels uncannily autobiographical: a Russian intellectual travels in Italy, neither at home abroad nor able to inhabit the homeland he imagines. In the final image, a Russian house seems contained within an Italian abbey. The two landscapes coexist without becoming one.
+
+<figure>
+
+![The roofless Gothic nave of San Galgano Abbey: two rows of brick-and-stone arches run along a gravel floor towards the east wall, with its tall lancet windows and a round oculus, under a grey sky.](../../assets/images/tarkovsky/san-galgano-abbey.jpg)
+
+<figcaption>The roofless nave of the Abbey of San Galgano in Tuscany, where Tarkovsky filmed the final shot of <em>Nostalghia</em>. Photo: Spike, CC BY-SA 4.0.</figcaption>
+</figure>
 
 By _The Sacrifice_, made in Sweden with cinematographer Sven Nykvist, the lost house is no longer only remembered. It is burned.
 
@@ -163,3 +198,13 @@ And perhaps this is where an account of Tarkovsky's world influence should end: 
 7. [Tarkovsky & Bergman, "Sweden: Gotland island"](https://tarkovskybergman.com/photo-essays/sweden-gotland-island/) (quotes Bergman's 2007 interview).
 
 For first-person materials: Tarkovsky's _Sculpting in Time_ and _Time Within Time_ (his diaries). For a family perspective, Marina Tarkovskaya's _Oskolki zerkala_ (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
+
+## Image credits
+
+All images come from Wikimedia Commons. They are used under the licenses named below; some were resized for the web.
+
+- Andrei Tarkovsky in Moscow, 1980: photo by Boris Baldin, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_by_Boris_Baldin.jpg).
+- Närsholmen, Gotland: photo by Måns Hagberg, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:N%C3%A4rsholmen_juli_2018.jpg).
+- Arseny Tarkovsky with his mother and older brother, 1911: photo by Israel Bril, public domain ([PD-RusEmpire](https://commons.wikimedia.org/wiki/Template:PD-RusEmpire)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:1911._%D0%90%D1%80%D1%81%D0%B5%D0%BD%D0%B8%D0%B9_%D0%A2%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D1%81_%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D1%8C%D1%8E_%D0%B8_%D1%81%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%BC_%D0%B1%D1%80%D0%B0%D1%82%D0%BE%D0%BC.jpg).
+- Russian souvenir sheet with stamps of Arseny and Andrei Tarkovsky, 2007: public domain as a Russian postage stamp ([PD-RU-exempt](https://commons.wikimedia.org/wiki/Template:PD-RU-exempt)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Russia_stamp_2007_%E2%84%96_1171-1172.jpg).
+- Abbey of San Galgano: photo by Spike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:San_Galgano_Abbey_interior_03.jpg).
