@@ -3,7 +3,7 @@ title: "The House, the Father, and the Tree: Following Tarkovsky Through Time"
 author: franchb
 pubDatetime: 2026-10-21T18:30:00Z
 featured: false
-draft: true
+draft: false
 tags:
   - cinema
   - tarkovsky
