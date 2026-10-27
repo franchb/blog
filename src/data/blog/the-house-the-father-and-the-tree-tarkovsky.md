@@ -69,6 +69,13 @@ That history complicates any simplistic portrait of a family eternally opposed t
 
 Arseny's older brother Valery became involved in revolutionary politics and died in 1919 amid fighting against forces associated with Nykyfor Hryhoriv in Ukraine [2]. Arseny was a child when this happened.
 
+<figure>
+
+![A black-and-white studio photograph: a woman in a large feathered hat sits between two boys in straw hats on a carved stone balustrade, in front of a painted woodland backdrop. The older boy is on the left; the small boy on the right is Arseny. The studio's imprint runs along the bottom of the card.](../../assets/images/tarkovsky/arseny-tarkovsky-1911-bril.jpg)
+
+<figcaption>Arseny Tarkovsky (right), aged about four, with his mother and his older brother. Elisavetgrad, 1911. Photo: Israel Bril, public domain.</figcaption>
+</figure>
+
 A later biographical account describes an extraordinary episode in **1921**: Arseny and friends published an anti-Lenin acrostic, were arrested, and he escaped while being transported for trial [2]. The incident is widely retold, but not every dramatic detail can be checked against accessible contemporary documents; it should be read with that qualification.
 
 Arseny became a poet and translator in Soviet Russia, served as a war correspondent during World War II, was severely wounded, and lost a leg. Remarkably, his first collection of original poems was published only in 1962, the year his son released his first feature film, _Ivan's Childhood_. Nick James, writing in the BFI's _Sight and Sound_, treats the father's poetry as a central influence on the son's cinema: Andrei used seven of Arseny's poems across _Mirror_, _Stalker_ and _Nostalghia_ [3].
@@ -194,9 +201,10 @@ For first-person materials: Tarkovsky's _Sculpting in Time_ and _Time Within Tim
 
 ## Image credits
 
-All images come from Wikimedia Commons. They are used under the licenses named below and were resized for the web.
+All images come from Wikimedia Commons. They are used under the licenses named below; some were resized for the web.
 
 - Andrei Tarkovsky in Moscow, 1980: photo by Boris Baldin, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_by_Boris_Baldin.jpg).
 - Närsholmen, Gotland: photo by Måns Hagberg, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:N%C3%A4rsholmen_juli_2018.jpg).
+- Arseny Tarkovsky with his mother and older brother, 1911: photo by Israel Bril, public domain ([PD-RusEmpire](https://commons.wikimedia.org/wiki/Template:PD-RusEmpire)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:1911._%D0%90%D1%80%D1%81%D0%B5%D0%BD%D0%B8%D0%B9_%D0%A2%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D1%81_%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D1%8C%D1%8E_%D0%B8_%D1%81%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%BC_%D0%B1%D1%80%D0%B0%D1%82%D0%BE%D0%BC.jpg).
 - Russian souvenir sheet with stamps of Arseny and Andrei Tarkovsky, 2007: public domain as a Russian postage stamp ([PD-RU-exempt](https://commons.wikimedia.org/wiki/Template:PD-RU-exempt)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Russia_stamp_2007_%E2%84%96_1171-1172.jpg).
 - Abbey of San Galgano: photo by Spike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:San_Galgano_Abbey_interior_03.jpg).
