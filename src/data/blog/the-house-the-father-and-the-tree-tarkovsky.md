@@ -13,7 +13,7 @@ tags:
 description: "From revolution and exile to The Sacrifice and the worldwide legacy of Tarkovsky's cinema: an exploration of memory, faith, and time."
 ---
 
-I started with a question about Andrei Tarkovsky's _The Sacrifice_. Then I wondered what became of the son to whom the film was dedicated. That question led backwards—to Tarkovsky's father, the poet Arseny; to revolution and civil war; to his mother's memories; and forwards again, to the directors around the world who have inherited, contested, and transformed his cinema.
+I started with a question about [Andrei Tarkovsky](https://en.wikipedia.org/wiki/Andrei_Tarkovsky)'s [_The Sacrifice_](<https://en.wikipedia.org/wiki/The_Sacrifice_(1986_film)>). Then I wondered what became of the son to whom the film was dedicated. That question led backwards—to Tarkovsky's father, the poet [Arseny](https://en.wikipedia.org/wiki/Arseny_Tarkovsky); to revolution and civil war; to his mother's memories; and forwards again, to the directors around the world who have inherited, contested, and transformed his cinema.
 
 The connecting idea is **inheritance**. What can one generation leave another when homes burn, nations change, families separate, and even memory is unreliable?
 
@@ -45,29 +45,29 @@ It is tempting to demand an answer: did prayer work? Did Maria save the world? W
 
 **Can a sacrifice be noble when it destroys what other people also love?** Alexander's act may be faith, madness, or both. His family bears its consequences. This is more disturbing than a simple parable about belief.
 
-At the end the child tends the tree and asks about the opening of John's Gospel: "In the beginning was the Word." The father has fallen silent; the child speaks. And the film is dedicated to Tarkovsky's son Andrei, with hope and confidence.
+At the end the child tends the tree and asks about the [opening of John's Gospel](https://en.wikipedia.org/wiki/John_1:1): "In the beginning was the Word." The father has fallen silent; the child speaks. And the film is dedicated to Tarkovsky's son Andrei, with hope and confidence.
 
 ## The son: a reunion in the shadow of death
 
 Andrei Andreevich Tarkovsky was born in 1970. During his father's work abroad in the early 1980s, he remained in the USSR. The Soviet authorities refused permission for him to join his parents in the West, and a dispute over artistic freedom became a separation between father and son.
 
-On **19 January 1986**, fifteen-year-old Andrei and his grandmother, eighty-five-year-old Anna Semyonovna Egorkina, finally arrived in Paris. The French president François Mitterrand had written to Soviet leader Mikhail Gorbachev on Tarkovsky's behalf. Contemporary news reports describe the sudden granting of exit visas after a four-year struggle with the Soviet authorities [1]. Chris Marker filmed the reunion; that footage opens his _One Day in the Life of Andrei Arsenevich_.
+On **19 January 1986**, fifteen-year-old Andrei and his grandmother, eighty-five-year-old Anna Semyonovna Egorkina, finally arrived in Paris. The French president [François Mitterrand](https://en.wikipedia.org/wiki/Fran%C3%A7ois_Mitterrand) had written to Soviet leader [Mikhail Gorbachev](https://en.wikipedia.org/wiki/Mikhail_Gorbachev) on Tarkovsky's behalf. Contemporary news reports describe the sudden granting of exit visas after a four-year struggle with the Soviet authorities [1]. [Chris Marker](https://en.wikipedia.org/wiki/Chris_Marker) filmed the reunion; that footage opens his [_One Day in the Life of Andrei Arsenevich_](https://en.wikipedia.org/wiki/One_Day_in_the_Life_of_Andrei_Arsenevich).
 
 Tarkovsky was already seriously ill. He died in Paris on **29 December 1986**, aged fifty-four. Father and son had less than a year together after their long separation.
 
-The younger Andrei went on to work in documentary filmmaking and the preservation of his father's legacy. His _Andrey Tarkovsky: A Cinema Prayer_ (2019) offers a valuable counterpoint to any retelling of these events: archival material and the father's own words, not just our interpretations.
+The younger Andrei went on to work in documentary filmmaking and the preservation of his father's legacy. His [_Andrey Tarkovsky: A Cinema Prayer_](https://www.labiennale.org/en/cinema/2019/venice-classics/andrey-tarkovsky-cinema-prayer) (2019) offers a valuable counterpoint to any retelling of these events: archival material and the father's own words, not just our interpretations.
 
 I cannot help seeing the image of the boy watering the tree as a figure for continuity after a father's death. But this is an interpretation of the film—not a claim to know the son's private motivations.
 
 ## The father: Arseny Tarkovsky and the revolution
 
-The filmmaker's father, **Arseny Alexandrovich Tarkovsky (1907–1989)**, was a poet and translator whose verse later entered _Mirror_, _Stalker_, and _Nostalghia_. His mother, **Maria Ivanovna Vishnyakova (1907–1979)**, worked for many years as a proofreader at a Moscow printing house (the printing-house episode in _Mirror_ draws on this) and largely raised Andrei and his sister Marina after the parents separated.
+The filmmaker's father, **Arseny Alexandrovich Tarkovsky (1907–1989)**, was a poet and translator whose verse later entered [_Mirror_](<https://en.wikipedia.org/wiki/Mirror_(1975_film)>), [_Stalker_](<https://en.wikipedia.org/wiki/Stalker_(1979_film)>), and [_Nostalghia_](https://en.wikipedia.org/wiki/Nostalghia). His mother, **Maria Ivanovna Vishnyakova (1907–1979)**, worked for many years as a proofreader at a Moscow printing house (the printing-house episode in _Mirror_ draws on this) and largely raised Andrei and his sister [Marina](https://en.wikipedia.org/wiki/Marina_Tarkovskaya) after the parents separated.
 
-Arseny's life reaches into the world before the director was born. He grew up in Elisavetgrad (today Kropyvnytskyi, Ukraine) during the last years of the Russian Empire. His father, Alexander Karlovich Tarkovsky, had participated in the anti-tsarist revolutionary movement and endured imprisonment and exile.
+Arseny's life reaches into the world before the director was born. He grew up in [Elisavetgrad](https://en.wikipedia.org/wiki/Kropyvnytskyi) (today Kropyvnytskyi, Ukraine) during the last years of the Russian Empire. His father, Alexander Karlovich Tarkovsky, had participated in the anti-tsarist revolutionary movement and endured imprisonment and exile.
 
 That history complicates any simplistic portrait of a family eternally opposed to government. The grandfather was himself a revolutionary under the old regime. But revolution did not spare the family from grief.
 
-Arseny's older brother Valery became involved in revolutionary politics and died in 1919 amid fighting against forces associated with Nykyfor Hryhoriv in Ukraine [2]. Arseny was a child when this happened.
+Arseny's older brother Valery became involved in revolutionary politics and died in 1919 amid fighting against forces associated with [Nykyfor Hryhoriv](https://en.wikipedia.org/wiki/Nykyfor_Hryhoriv) in Ukraine [2]. Arseny was a child when this happened.
 
 <figure>
 
@@ -78,7 +78,7 @@ Arseny's older brother Valery became involved in revolutionary politics and died
 
 A later biographical account describes an extraordinary episode in **1921**: Arseny and friends published an anti-Lenin acrostic, were arrested, and he escaped while being transported for trial [2]. The incident is widely retold, but not every dramatic detail can be checked against accessible contemporary documents; it should be read with that qualification.
 
-Arseny became a poet and translator in Soviet Russia, served as a war correspondent during World War II, was severely wounded, and lost a leg. Remarkably, his first collection of original poems was published only in 1962, the year his son released his first feature film, _Ivan's Childhood_. Nick James, writing in the BFI's _Sight and Sound_, treats the father's poetry as a central influence on the son's cinema: Andrei used seven of Arseny's poems across _Mirror_, _Stalker_ and _Nostalghia_ [3].
+Arseny became a poet and translator in Soviet Russia, served as a war correspondent during World War II, was severely wounded, and lost a leg. Remarkably, his first collection of original poems was published only in 1962, the year his son released his first feature film, [_Ivan's Childhood_](https://en.wikipedia.org/wiki/Ivan%27s_Childhood). Nick James, writing in the BFI's _Sight and Sound_, treats the father's poetry as a central influence on the son's cinema: Andrei used seven of Arseny's poems across _Mirror_, _Stalker_ and _Nostalghia_ [3].
 
 <figure>
 
@@ -103,9 +103,9 @@ This is why knowing the family history enriches _Mirror_—but does not exhaust 
 
 ## _Nostalghia_: leaving without planning to be an exile
 
-Tarkovsky did not originally depart the Soviet Union as a permanent émigré. In 1982 he went to Italy with official permission to make _Nostalghia_ (1983), working with Italian collaborators including Tonino Guerra.
+Tarkovsky did not originally depart the Soviet Union as a permanent émigré. In 1982 he went to Italy with official permission to make _Nostalghia_ (1983), working with Italian collaborators including [Tonino Guerra](https://en.wikipedia.org/wiki/Tonino_Guerra).
 
-He had experienced years of conflict with the Soviet film establishment. _Andrei Rublev_ had encountered prolonged release problems; other films and projects faced resistance. International recognition did not eliminate domestic restrictions.
+He had experienced years of conflict with the Soviet film establishment. [_Andrei Rublev_](<https://en.wikipedia.org/wiki/Andrei_Rublev_(film)>) had encountered prolonged release problems; other films and projects faced resistance. International recognition did not eliminate domestic restrictions.
 
 On **10 July 1984**, at a press conference in Milan, he announced his decision not to return to the USSR. Contemporary reporting quotes his complaint that his filmmaking had been repeatedly obstructed and records the unresolved separation from his son [4].
 
@@ -127,23 +127,23 @@ _Nostalghia_, completed before the public break, now feels uncannily autobiograp
 <figcaption>The roofless nave of the Abbey of San Galgano in Tuscany, where Tarkovsky filmed the final shot of <em>Nostalghia</em>. Photo: Spike, CC BY-SA 4.0.</figcaption>
 </figure>
 
-By _The Sacrifice_, made in Sweden with cinematographer Sven Nykvist, the lost house is no longer only remembered. It is burned.
+By _The Sacrifice_, made in Sweden with cinematographer [Sven Nykvist](https://en.wikipedia.org/wiki/Sven_Nykvist), the lost house is no longer only remembered. It is burned.
 
 ## Why is Tarkovsky so highly regarded?
 
 It is not because his films are difficult, or because their characters speak philosophically, or because mist and water look beautiful. His achievement is more specific: he expanded cinema's ability to render **experienced time**.
 
-His book _Sculpting in Time_ explains why the medium's distinctive material is not simply the moving image, but time impressed into it.
+His book [_Sculpting in Time_](https://search.worldcat.org/title/sculpting-in-time-reflections-on-the-cinema/oclc/31736519) explains why the medium's distinctive material is not simply the moving image, but time impressed into it.
 
 Consider three films:
 
-In **_Solaris_ (1972)**, an encounter with an alien intelligence becomes an inquiry into grief, guilt, love, and the limits of knowing another person. The central puzzle cannot be solved with better equipment.
+In **[_Solaris_](<https://en.wikipedia.org/wiki/Solaris_(1972_film)>) (1972)**, an encounter with an alien intelligence becomes an inquiry into grief, guilt, love, and the limits of knowing another person. The central puzzle cannot be solved with better equipment.
 
 In **_Stalker_ (1979)**, a room supposedly fulfills one's deepest desire. But what if we do not know our own deepest desire? The science-fiction premise becomes a test of self-knowledge.
 
 In **_Mirror_**, memory itself becomes the structure, rather than information inserted into a conventional story.
 
-The painterly references—to Leonardo, Bruegel and other European masters—the father's poems, Orthodox spiritual imagery and unusual soundscapes all contribute. But imitating the wet floors and long tracking shots misses the point. **A Tarkovskian shot must do something with our sense of time.**
+The painterly references—to [Leonardo](https://en.wikipedia.org/wiki/Leonardo_da_Vinci), [Bruegel](https://en.wikipedia.org/wiki/Pieter_Bruegel_the_Elder) and other European masters—the father's poems, Orthodox spiritual imagery and unusual soundscapes all contribute. But imitating the wet floors and long tracking shots misses the point. **A Tarkovskian shot must do something with our sense of time.**
 
 There are legitimate objections: his films can feel excessively slow, his characters can declaim rather than converse, and women are at times treated mainly through men's spiritual quests. Appreciation need not be worship. His achievements are worth serious criticism, not protective reverence.
 
@@ -151,17 +151,17 @@ There are legitimate objections: his films can feel excessively slow, his charac
 
 Nick James's substantial BFI essay, ["The Tarkovsky legacy"](https://www.bfi.org.uk/sight-and-sound/features/tarkovsky-legacy), is an excellent map of both explicit influence and more subtle aesthetic kinships [3].
 
-**Ingmar Bergman** is a crucial predecessor and, at a distance, an interlocutor—though the two men never met. Bergman later recalled that when Tarkovsky was on Gotland, twenty minutes away, he chose not to go: what he wanted to say could not have passed through an interpreter [7]. _Winter Light_ (1963) addresses faith and God's silence; _The Sacrifice_ was made with important Swedish collaborators, including Bergman's cinematographer Sven Nykvist. **Robert Bresson's** _Diary of a Country Priest_ (1951) and **Michelangelo Antonioni's** _L'Avventura_ (1960) provide other routes into spiritual austerity and landscapes of absence.
+**[Ingmar Bergman](https://en.wikipedia.org/wiki/Ingmar_Bergman)** is a crucial predecessor and, at a distance, an interlocutor—though the two men never met. Bergman later recalled that when Tarkovsky was on [Gotland](https://en.wikipedia.org/wiki/Gotland), twenty minutes away, he chose not to go: what he wanted to say could not have passed through an interpreter [7]. [_Winter Light_](https://en.wikipedia.org/wiki/Winter_Light) (1963) addresses faith and God's silence; _The Sacrifice_ was made with important Swedish collaborators, including Bergman's cinematographer Sven Nykvist. **[Robert Bresson's](https://en.wikipedia.org/wiki/Robert_Bresson)** [_Diary of a Country Priest_](https://en.wikipedia.org/wiki/Diary_of_a_Country_Priest) (1951) and **[Michelangelo Antonioni's](https://en.wikipedia.org/wiki/Michelangelo_Antonioni)** [_L'Avventura_](https://en.wikipedia.org/wiki/L%27Avventura) (1960) provide other routes into spiritual austerity and landscapes of absence.
 
-**Lars von Trier** offers a documented line of influence. He has spoken repeatedly of his admiration for _Mirror_ and dedicated _Antichrist_ (2009) to Tarkovsky. His _Melancholia_ (2011) makes a provocative companion to _The Sacrifice_: the world may end, but the possibility of redemption is entirely different.
+**[Lars von Trier](https://en.wikipedia.org/wiki/Lars_von_Trier)** offers a documented line of influence. He has spoken repeatedly of his admiration for _Mirror_ and dedicated [_Antichrist_](<https://en.wikipedia.org/wiki/Antichrist_(2009_film)>) (2009) to Tarkovsky. His [_Melancholia_](<https://en.wikipedia.org/wiki/Melancholia_(2011_film)>) (2011) makes a provocative companion to _The Sacrifice_: the world may end, but the possibility of redemption is entirely different.
 
-**Béla Tarr** (1955–2026), especially with _Werckmeister Harmonies_ (2000), teaches us to distrust superficial resemblance. His long takes and apocalyptic atmospheres invite comparisons with Tarkovsky, but Tarr drew the line himself: Tarkovsky was religious and he was not; Tarkovsky "always had hope; he believed in God" [3]. In a 2011 interview he put it more plainly still: he does not believe in God [5]. Similar form, different metaphysics.
+**[Béla Tarr](https://en.wikipedia.org/wiki/B%C3%A9la_Tarr)** (1955–2026), especially with [_Werckmeister Harmonies_](https://en.wikipedia.org/wiki/Werckmeister_Harmonies) (2000), teaches us to distrust superficial resemblance. His long takes and apocalyptic atmospheres invite comparisons with Tarkovsky, but Tarr drew the line himself: Tarkovsky was religious and he was not; Tarkovsky "always had hope; he believed in God" [3]. In a 2011 interview he put it more plainly still: he does not believe in God [5]. Similar form, different metaphysics.
 
-**Nuri Bilge Ceylan** names Tarkovsky among his biggest influences [6]. In _Distant_ (_Uzak_, 2002), the sight of someone watching _Stalker_ even becomes a joke about aesthetic pretension. _Once Upon a Time in Anatolia_ (2011) transforms patient observation into a moral mystery of ordinary people.
+**[Nuri Bilge Ceylan](https://en.wikipedia.org/wiki/Nuri_Bilge_Ceylan)** names Tarkovsky among his biggest influences [6]. In [_Distant_](<https://en.wikipedia.org/wiki/Distant_(film)>) (_Uzak_, 2002), the sight of someone watching _Stalker_ even becomes a joke about aesthetic pretension. [_Once Upon a Time in Anatolia_](https://en.wikipedia.org/wiki/Once_Upon_a_Time_in_Anatolia) (2011) transforms patient observation into a moral mystery of ordinary people.
 
-**Andrey Zvyagintsev's** _The Return_ (2003) and _The Banishment_ (2007) converse with Tarkovsky in their father figures, water, landscape and moral uncertainty. They should not be mistaken for mere copies.
+**[Andrey Zvyagintsev's](https://en.wikipedia.org/wiki/Andrey_Zvyagintsev)** [_The Return_](<https://en.wikipedia.org/wiki/The_Return_(2003_film)>) (2003) and [_The Banishment_](https://en.wikipedia.org/wiki/The_Banishment) (2007) converse with Tarkovsky in their father figures, water, landscape and moral uncertainty. They should not be mistaken for mere copies.
 
-Other films make illuminating **comparisons rather than demonstrable direct lines of influence**. **Terrence Malick's** _The Tree of Life_ (2011) expands a remembered childhood into cosmic history; critics, James among them [3], count Malick among Tarkovsky's heirs, but Malick, who almost never gives interviews, has not said so himself. **Krzysztof Kieślowski's** _Three Colours: Red_ (1994) asks about invisible moral connections. **Apichatpong Weerasethakul's** _Uncle Boonmee Who Can Recall His Past Lives_ (2010) and _Memoria_ (2021) explore forms of memory not confined to one individual.
+Other films make illuminating **comparisons rather than demonstrable direct lines of influence**. **[Terrence Malick's](https://en.wikipedia.org/wiki/Terrence_Malick)** [_The Tree of Life_](<https://en.wikipedia.org/wiki/The_Tree_of_Life_(film)>) (2011) expands a remembered childhood into cosmic history; critics, James among them [3], count Malick among Tarkovsky's heirs, but Malick, who almost never gives interviews, has not said so himself. **[Krzysztof Kieślowski's](https://en.wikipedia.org/wiki/Krzysztof_Kie%C5%9Blowski)** [_Three Colours: Red_](https://en.wikipedia.org/wiki/Three_Colours:_Red) (1994) asks about invisible moral connections. **[Apichatpong Weerasethakul's](https://en.wikipedia.org/wiki/Apichatpong_Weerasethakul)** [_Uncle Boonmee Who Can Recall His Past Lives_](https://en.wikipedia.org/wiki/Uncle_Boonmee_Who_Can_Recall_His_Past_Lives) (2010) and [_Memoria_](<https://en.wikipedia.org/wiki/Memoria_(2021_film)>) (2021) explore forms of memory not confined to one individual.
 
 These differences are the measure of Tarkovsky's reach. Influence matters most when it generates new questions, not perfect reproductions of an established style.
 
@@ -174,7 +174,7 @@ I would follow this sequence to study the lineage rather than merely assemble a 
 3. **Andrei Tarkovsky, _Mirror_ (1975).** How an individual remembers a century.
 4. **Terrence Malick, _The Tree of Life_ (2011).** The family and the universe in one visual thought.
 5. **Lars von Trier, _Melancholia_ (2011).** An apocalypse without Alexander's bargain.
-6. **Béla Tarr and Ágnes Hranitzky, _Werckmeister Harmonies_ (2000).** Time without the same promise of transcendence.
+6. **Béla Tarr and [Ágnes Hranitzky](https://en.wikipedia.org/wiki/%C3%81gnes_Hranitzky), _Werckmeister Harmonies_ (2000).** Time without the same promise of transcendence.
 7. **Nuri Bilge Ceylan, _Once Upon a Time in Anatolia_ (2011).** Mystery and responsibility without supernatural rules.
 8. **Apichatpong Weerasethakul, _Memoria_ (2021).** Memory at the boundary of consciousness and the world.
 
@@ -194,6 +194,8 @@ At the end of _The Sacrifice_, the child waters a tree that may never revive. He
 
 And perhaps this is where an account of Tarkovsky's world influence should end: not with a canon or a ranking, but with somebody continuing the work.
 
+Complement with [_Directed by Andrei Tarkovsky_](https://jonathanrosenbaum.net/?p=9615) (1988), Michal Leszczylowski's documentary about the making of _The Sacrifice_, which follows both attempts to film the burning house; [_Voyage in Time_](https://en.wikipedia.org/wiki/Voyage_in_Time) (1983), in which Tarkovsky and Tonino Guerra travel through Italy looking for the places of _Nostalghia_; [_Instant Light_](https://search.worldcat.org/search?q=%22Instant+light%22+Tarkovsky+polaroids), the Polaroids Tarkovsky took of his family and friends in Russia and of Italy between 1979 and 1984; [_I Burned at the Feast_](https://search.worldcat.org/search?q=%22I+burned+at+the+feast%22), Arseny's selected poems in English, translated by Philip Metres and Dimitri Psurtsev; and [Maria Popova](https://en.wikipedia.org/wiki/Maria_Popova)'s [reading of _Sculpting in Time_](https://www.themarginalian.org/2016/04/08/sculpting-in-time-tarkovsky/).
+
 ## Sources and further reading
 
 1. [UPI, report on the family reunion (19 January 1986)](https://www.upi.com/Archives/1986/01/19/Russian-filmmakers-son-mother-in-law-emigrate-to-West/5375506494800/).
@@ -204,7 +206,7 @@ And perhaps this is where an account of Tarkovsky's world influence should end: 
 6. [Eye Filmmuseum, _Mirror_ in the film programme accompanying its Nuri Bilge Ceylan exhibition](https://www.eyefilm.nl/en/whats-on/the-mirror/1377550).
 7. [Tarkovsky & Bergman, "Sweden: Gotland island"](https://tarkovskybergman.com/photo-essays/sweden-gotland-island/) (quotes Bergman's 2007 interview).
 
-For first-person materials: Tarkovsky's _Sculpting in Time_ and _Time Within Time_ (his diaries). For a family perspective, Marina Tarkovskaya's _Oskolki zerkala_ (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
+For first-person materials: Tarkovsky's _Sculpting in Time_ and [_Time Within Time_](https://www.worldcat.org/title/25088374) (his diaries). For a family perspective, Marina Tarkovskaya's [_Oskolki zerkala_](https://search.worldcat.org/search?q=%22Oskolki+zerkala%22) (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
 
 ## Image credits
 
