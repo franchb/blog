@@ -17,6 +17,13 @@ I started with a question about Andrei Tarkovsky's _The Sacrifice_. Then I wonde
 
 The connecting idea is **inheritance**. What can one generation leave another when homes burn, nations change, families separate, and even memory is unreliable?
 
+<figure>
+
+![Black-and-white photograph of Andrei Tarkovsky in a knitted bobble hat and a sheepskin-collared jacket, standing in a Moscow street lined with old apartment buildings.](../../assets/images/tarkovsky/tarkovsky-moscow-1980-baldin.jpg)
+
+<figcaption>Andrei Tarkovsky in Moscow, autumn 1980. The photographer's note on the envelope says he was scouting locations for <em>Nostalghia</em>; the street is near the Donskoy Monastery or on 1st Shchipkovsky Lane, where Tarkovsky grew up. Photo: Boris Baldin, CC BY-SA 4.0.</figcaption>
+</figure>
+
 This is a journey through films and history, not a claim to have decoded the director's symbols. Where an artistic influence is documented, I say so; where I am making a comparison, I treat it as a comparison.
 
 ## Table of contents
@@ -163,3 +170,9 @@ And perhaps this is where an account of Tarkovsky's world influence should end: 
 7. [Tarkovsky & Bergman, "Sweden: Gotland island"](https://tarkovskybergman.com/photo-essays/sweden-gotland-island/) (quotes Bergman's 2007 interview).
 
 For first-person materials: Tarkovsky's _Sculpting in Time_ and _Time Within Time_ (his diaries). For a family perspective, Marina Tarkovskaya's _Oskolki zerkala_ (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
+
+## Image credits
+
+All images come from Wikimedia Commons. They are used under the licenses named below and were resized for the web.
+
+- Andrei Tarkovsky in Moscow, 1980: photo by Boris Baldin, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_by_Boris_Baldin.jpg).
