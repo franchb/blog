@@ -92,6 +92,13 @@ Calling this simply a political defection misses its personal and artistic dimen
 
 _Nostalghia_, completed before the public break, now feels uncannily autobiographical: a Russian intellectual travels in Italy, neither at home abroad nor able to inhabit the homeland he imagines. In the final image, a Russian house seems contained within an Italian abbey. The two landscapes coexist without becoming one.
 
+<figure>
+
+![The roofless Gothic nave of San Galgano Abbey: two rows of brick-and-stone arches run along a gravel floor towards the east wall, with its tall lancet windows and a round oculus, under a grey sky.](../../assets/images/tarkovsky/san-galgano-abbey.jpg)
+
+<figcaption>The roofless nave of the Abbey of San Galgano in Tuscany, where Tarkovsky filmed the final shot of <em>Nostalghia</em>. Photo: Spike, CC BY-SA 4.0.</figcaption>
+</figure>
+
 By _The Sacrifice_, made in Sweden with cinematographer Sven Nykvist, the lost house is no longer only remembered. It is burned.
 
 ## Why is Tarkovsky so highly regarded?
@@ -176,3 +183,4 @@ For first-person materials: Tarkovsky's _Sculpting in Time_ and _Time Within Tim
 All images come from Wikimedia Commons. They are used under the licenses named below and were resized for the web.
 
 - Andrei Tarkovsky in Moscow, 1980: photo by Boris Baldin, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_by_Boris_Baldin.jpg).
+- Abbey of San Galgano: photo by Spike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:San_Galgano_Abbey_interior_03.jpg).
