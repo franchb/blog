@@ -111,6 +111,13 @@ On **10 July 1984**, at a press conference in Milan, he announced his decision n
 
 Calling this simply a political defection misses its personal and artistic dimensions. He wanted to make films and to be with his family. Instead, obtaining freedom to work abroad meant losing an ordinary home life in Russia.
 
+<figure>
+
+![A plain, cream-colored Florentine palazzo with stone-framed windows, an arched doorway and a wrought-iron street lamp, on a narrow street lined with parked cars.](../../assets/images/tarkovsky/palazzo-vegni-florence.jpg)
+
+<figcaption>Palazzo Gianni Vegni, Via di San Niccolò, Florence. A plaque on the building, put up by the city and the Tarkovsky Foundation on 29 December 2006, calls him an "exile in Florence" who "spent the last years of his life in this house, guest and honorary citizen of the city of Florence." Photo: Francesco Bini, CC BY-SA 4.0.</figcaption>
+</figure>
+
 _Nostalghia_, completed before the public break, now feels uncannily autobiographical: a Russian intellectual travels in Italy, neither at home abroad nor able to inhabit the homeland he imagines. In the final image, a Russian house seems contained within an Italian abbey. The two landscapes coexist without becoming one.
 
 <figure>
@@ -207,4 +214,5 @@ All images come from Wikimedia Commons. They are used under the licenses named b
 - Närsholmen, Gotland: photo by Måns Hagberg, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:N%C3%A4rsholmen_juli_2018.jpg).
 - Arseny Tarkovsky with his mother and older brother, 1911: photo by Israel Bril, public domain ([PD-RusEmpire](https://commons.wikimedia.org/wiki/Template:PD-RusEmpire)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:1911._%D0%90%D1%80%D1%81%D0%B5%D0%BD%D0%B8%D0%B9_%D0%A2%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D1%81_%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D1%8C%D1%8E_%D0%B8_%D1%81%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%BC_%D0%B1%D1%80%D0%B0%D1%82%D0%BE%D0%BC.jpg).
 - Russian souvenir sheet with stamps of Arseny and Andrei Tarkovsky, 2007: public domain as a Russian postage stamp ([PD-RU-exempt](https://commons.wikimedia.org/wiki/Template:PD-RU-exempt)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Russia_stamp_2007_%E2%84%96_1171-1172.jpg).
+- Palazzo Gianni Vegni, Florence: photo by Francesco Bini, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Via_San_Niccol%C3%B2_89A-91-93-95,_palazzo_gianni_vegni,_01.jpg); cropped. Plaque text from [a photo by RobertGreenham](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_plaque_in_Florence_2.JPG).
 - Abbey of San Galgano: photo by Spike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:San_Galgano_Abbey_interior_03.jpg).
