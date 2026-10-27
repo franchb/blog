@@ -34,6 +34,13 @@ A father and his young son plant a dead tree. The father tells a story about an 
 
 The father, Alexander, is a former actor and intellectual living with his family on a Swedish island. During his birthday celebration, news arrives of what seems to be a nuclear catastrophe. In fear, Alexander makes a promise to God: if the disaster is averted, he will give up everything—home, family, possessions, speech. The enigmatic postman Otto suggests that Alexander visit Maria, a woman said to have extraordinary powers. The next morning the world appears normal again. Alexander burns his house to fulfill his vow.
 
+<figure>
+
+![A flat, open heath on Närsholmen, Gotland: dry grass and a few wind-bent trees under a wide, cloudy sky, with the sea a thin line on the horizon.](../../assets/images/tarkovsky/narsholmen-gotland.jpg)
+
+<figcaption>Närsholmen, a peninsula on Gotland, where the exteriors of <em>The Sacrifice</em> were filmed. Photo: Måns Hagberg, CC BY-SA 4.0.</figcaption>
+</figure>
+
 It is tempting to demand an answer: did prayer work? Did Maria save the world? Was the catastrophe a vision, or was Alexander experiencing a psychological crisis? Tarkovsky refuses a definitive explanation. The uncertainty is the film's moral terrain.
 
 **Can a sacrifice be noble when it destroys what other people also love?** Alexander's act may be faith, madness, or both. His family bears its consequences. This is more disturbing than a simple parable about belief.
@@ -183,4 +190,5 @@ For first-person materials: Tarkovsky's _Sculpting in Time_ and _Time Within Tim
 All images come from Wikimedia Commons. They are used under the licenses named below and were resized for the web.
 
 - Andrei Tarkovsky in Moscow, 1980: photo by Boris Baldin, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_by_Boris_Baldin.jpg).
+- Närsholmen, Gotland: photo by Måns Hagberg, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:N%C3%A4rsholmen_juli_2018.jpg).
 - Abbey of San Galgano: photo by Spike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:San_Galgano_Abbey_interior_03.jpg).
