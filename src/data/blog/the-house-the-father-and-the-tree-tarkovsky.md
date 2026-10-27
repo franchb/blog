@@ -73,6 +73,13 @@ A later biographical account describes an extraordinary episode in **1921**: Ars
 
 Arseny became a poet and translator in Soviet Russia, served as a war correspondent during World War II, was severely wounded, and lost a leg. Remarkably, his first collection of original poems was published only in 1962, the year his son released his first feature film, _Ivan's Childhood_. Nick James, writing in the BFI's _Sight and Sound_, treats the father's poetry as a central influence on the son's cinema: Andrei used seven of Arseny's poems across _Mirror_, _Stalker_ and _Nostalghia_ [3].
 
+<figure>
+
+![A 2007 Russian souvenir sheet with two sepia stamps side by side, Arseny Tarkovsky (1907–1989) and Andrei Tarkovsky (1932–1986), over a faint clock face and a strip of film. Below them, a line of Arseny's verse in Russian.](../../assets/images/tarkovsky/tarkovsky-stamps-2007.jpg)
+
+<figcaption>Father and son on one sheet: Russian stamps issued in 2007, a hundred years after Arseny's birth and seventy-five after Andrei's. The margin quotes Arseny: «Не надо мне числа: / Я был, и есть, и буду…», "I have no need of dates: I was, and am, and will be" (my translation). Public domain.</figcaption>
+</figure>
+
 For the maternal family's precise experience in 1917–1921, the widely available biographical record is much thinner. I would rather leave that uncertainty visible than construct an unsupported narrative of confiscations or persecution.
 
 ## _Mirror_: the family becomes cinematic time
@@ -191,4 +198,5 @@ All images come from Wikimedia Commons. They are used under the licenses named b
 
 - Andrei Tarkovsky in Moscow, 1980: photo by Boris Baldin, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Andrei_Tarkovsky_by_Boris_Baldin.jpg).
 - Närsholmen, Gotland: photo by Måns Hagberg, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:N%C3%A4rsholmen_juli_2018.jpg).
+- Russian souvenir sheet with stamps of Arseny and Andrei Tarkovsky, 2007: public domain as a Russian postage stamp ([PD-RU-exempt](https://commons.wikimedia.org/wiki/Template:PD-RU-exempt)), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Russia_stamp_2007_%E2%84%96_1171-1172.jpg).
 - Abbey of San Galgano: photo by Spike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:San_Galgano_Abbey_interior_03.jpg).
