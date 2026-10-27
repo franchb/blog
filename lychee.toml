@@ -23,4 +23,12 @@ archive = "wayback"
 suggest = true
 
 # Hosts that reject automated checks even when the page is fine go here, with a reason.
-exclude = []
+# These links are not monitored, so check them by hand now and then.
+exclude = [
+  # WorldCat answers 403 to automated clients.
+  '^https://(search\.|www\.)?worldcat\.org/',
+  # Russian state cultural portal; requests from GitHub's runners time out.
+  '^https://(www\.)?culture\.ru/',
+  # Connections from GitHub's runners fail (site may be down); essay source [7].
+  '^https://(www\.)?tarkovskybergman\.com/',
+]
