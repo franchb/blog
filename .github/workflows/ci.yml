@@ -46,5 +46,8 @@ jobs:
       - name: "📝 Checking code format"
         run: pnpm run format:check
 
+      - name: "🖼️ Check generated figures are up to date"
+        run: pnpm run figures --check
+
       - name: "🚀 Build the project"
         run: pnpm run build
