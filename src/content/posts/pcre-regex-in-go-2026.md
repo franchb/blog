@@ -39,7 +39,7 @@ The other argument in my April draft was that translating Wasm to Go throws away
 
 What the sandbox doesn't prevent is a bug in PCRE2 corrupting PCRE2's own heap inside linear memory. That gives you wrong match results or a panic, never a write into Go memory. wazero has exactly the same property, so it isn't a reason to prefer one runtime over the other. The practical difference is that a trap shows up as a Go panic, so a wrapper has to recover at its API boundary and return an error.
 
-The project frames this with Chromium's [Rule of Two](https://chromium.googlesource.com/chromium/src/+/main/docs/security/rule-of-2.md): pick at most two of an unsafe implementation language, untrustworthy input and high privilege. A regex engine in a WAF is C code reading attacker-controlled bytes, so it already has two. Running it inside a bounds-checked slice is the point. One caveat from the README: wasm2go assumes the Wasm module itself is trusted. That's fine here, because you build the module. Patterns and subjects are data.
+The project frames this with Chromium's [Rule of Two](https://github.com/chromium/chromium/blob/main/docs/security/rule-of-2.md): pick at most two of an unsafe implementation language, untrustworthy input and high privilege. A regex engine in a WAF is C code reading attacker-controlled bytes, so it already has two. Running it inside a bounds-checked slice is the point. One caveat from the README: wasm2go assumes the Wasm module itself is trusted. That's fine here, because you build the module. Patterns and subjects are data.
 
 So on the runtime question, wasm2go is good enough. The costs that remain are about PCRE2.
 
