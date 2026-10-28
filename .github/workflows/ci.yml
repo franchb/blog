@@ -16,7 +16,8 @@ jobs:
   build:
     name: Code standards & build
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    # Cold-cache installs (new pnpm store) plus the build can exceed 3 min.
+    timeout-minutes: 10
 
     steps:
       - name: "☁️ Checkout repository"
