@@ -158,8 +158,8 @@ For the "honest benchmarks against a native JIT build" part, the repo also has a
 | one 10-byte `MatchString`, ns | 119         | 176     | **323**  | 209                        | 154                |
 
 - **Against regexp2:** go-pcre2 is faster on the simple pattern and the backreference, ties on lookbehind, and loses badly on the email pattern. Its per-call overhead is about twice regexp2's.
-- **Against PCRE2's own interpreter compiled natively:** the translation costs 1.5× to 2.5×.
-- **The JIT** is a separate multiplier, 1.5× to 6.1× on these patterns, and the largest on the email pattern.
+- **Against PCRE2's own interpreter compiled natively:** the translation costs 1.5× to 2.5× on these four patterns. A plain literal search that never matches is the exception: there the native interpreter is 8× faster than go-pcre2, and the JIT is actually slower than the interpreter.
+- **The JIT** is a separate multiplier, 1.5× to 6.1× on these four patterns, and the largest on the email pattern.
 
 The full tables and method are in [docs/BENCHMARKS.md](https://github.com/franchb/go-pcre2/blob/main/docs/BENCHMARKS.md).
 
