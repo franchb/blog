@@ -1,0 +1,48 @@
+name: Link check
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    # Weekly, Monday 05:23 UTC.
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "src/content/posts/**"
+      - "lychee.toml"
+      - ".github/workflows/link-check.yml"
+
+jobs:
+  lychee:
+    name: Check links in posts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      LYCHEE_VERSION: v0.24.2
+      # Must match the upstream lychee-x86_64-unknown-linux-gnu.tar.gz.sha256 for this release.
+      LYCHEE_SHA256: 1f4e0ef7f6554a6ed33dd7ac144fb2e1bbed98598e7af973042fc5cd43951c9a
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+
+      - name: Install lychee (checksum-verified)
+        run: |
+          curl -sSfL -o lychee.tar.gz \
+            "https://github.com/lycheeverse/lychee/releases/download/lychee-${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${LYCHEE_SHA256}  lychee.tar.gz" | sha256sum --check --strict
+          tar -xzf lychee.tar.gz --strip-components=1 lychee-x86_64-unknown-linux-gnu/lychee
+          rm lychee.tar.gz
+          ./lychee --version
+
+      - name: Check links
+        run: |
+          status=0
+          ./lychee --config lychee.toml --no-progress \
+            --format markdown --output lychee-report.md \
+            'src/content/posts/**/*.md' || status=$?
+          cat lychee-report.md >> "$GITHUB_STEP_SUMMARY"
+          cat lychee-report.md
+          exit "$status"

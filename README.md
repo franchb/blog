@@ -2,7 +2,7 @@
 
 Personal blog at [franchb.com](https://franchb.com/).
 
-Built with [AstroPaper](https://github.com/satnaing/astro-paper) v5.
+Built with [AstroPaper](https://github.com/satnaing/astro-paper) v6 (synced with upstream `main`, Astro 7).
 
 ## Development
 
