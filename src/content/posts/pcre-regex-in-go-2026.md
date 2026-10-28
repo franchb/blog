@@ -71,7 +71,7 @@ Use PCRE2, not PCRE1. The PCRE2 README says plainly that "the original PCRE1 lib
 
 ### The JIT doesn't come along
 
-[`pcre2jit(3)`](https://github.com/PCRE2Project/pcre2/blob/main/doc/pcre2jit.3) lists the platforms the JIT supports: 32- and 64-bit ARM, IBM s390x, x86 and x86-64, LoongArch, MIPS, PowerPC and RISC-V. WebAssembly isn't on the list, and the same page says configuring with `--enable-jit` on an unsupported platform fails the build. A Wasm module also has no way to generate machine code and jump to it. So the interpreter is all you get.
+[`pcre2jit(3)`](https://github.com/PCRE2Project/pcre2/blob/pcre2-10.49/doc/pcre2jit.3) lists the platforms the JIT supports: 32- and 64-bit ARM, IBM s390x, x86 and x86-64, LoongArch, MIPS, PowerPC and RISC-V. WebAssembly isn't on the list, and the same page says configuring with `--enable-jit` on an unsupported platform fails the build. A Wasm module also has no way to generate machine code and jump to it. So the interpreter is all you get.
 
 The docs only say the JIT "can greatly speed up pattern matching". I haven't measured the gap on a realistic rule set, and the figures I've seen quoted vary too much to repeat here. If you're considering this path, measure first with a native build: `pcre2test -t` against `pcre2test -jit -t` on your own patterns and traffic samples. The JIT is a big part of why people pick PCRE2 for WAF-style workloads, so losing it may cancel most of the reason to want PCRE2.
 
@@ -130,7 +130,7 @@ A maintained `go-pcre2` on wasm2go, released alongside each PCRE2 version, with 
 - [ncruces/wasm2go](https://github.com/ncruces/wasm2go): the Wasm-to-Go translator, with its [users list](https://github.com/ncruces/wasm2go/blob/main/USERS.md) and [security notes](https://github.com/ncruces/wasm2go/blob/main/SECURITY.md)
 - [wasilibs/go-re2](https://github.com/wasilibs/go-re2): RE2 via wasm2go since v1.12.0
 - [dlclark/regexp2](https://github.com/dlclark/regexp2): pure-Go .NET-flavor regex, and [regexp2cg](https://github.com/dlclark/regexp2cg) for code-generated matchers
-- [PCRE2](https://github.com/PCRE2Project/pcre2): upstream, with the [JIT docs](https://github.com/PCRE2Project/pcre2/blob/main/doc/pcre2jit.3) and [support lifecycle](https://github.com/PCRE2Project/pcre2/blob/main/SUPPORT-LIFECYCLE.md)
+- [PCRE2](https://github.com/PCRE2Project/pcre2): upstream, with the [JIT docs](https://github.com/PCRE2Project/pcre2/blob/pcre2-10.49/doc/pcre2jit.3) and [support lifecycle](https://github.com/PCRE2Project/pcre2/blob/main/SUPPORT-LIFECYCLE.md)
 - [OWASP Coraza](https://github.com/corazawaf/coraza) and [coraza-wasilibs](https://github.com/corazawaf/coraza-wasilibs)
 - [bobby-stripe/go-pcre](https://github.com/bobby-stripe/go-pcre): the 2021 PCRE2-in-Wasm experiment
 - [Mapping SQLite's WAL-Index into WebAssembly Memory](https://franchb.com/posts/mapping-sqlite-wal-index-into-wasm-memory/): the go-sqlite3 post this one follows
