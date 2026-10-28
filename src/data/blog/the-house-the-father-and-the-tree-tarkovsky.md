@@ -155,7 +155,7 @@ There are legitimate objections: his films can feel excessively slow, his charac
 
 Nick James's substantial BFI essay, ["The Tarkovsky legacy"](https://www.bfi.org.uk/sight-and-sound/features/tarkovsky-legacy), is an excellent map of both explicit influence and more subtle aesthetic kinships [3].
 
-**[Ingmar Bergman](https://en.wikipedia.org/wiki/Ingmar_Bergman)** is a crucial predecessor and, at a distance, an interlocutor—though the two men never met. Bergman later recalled that when Tarkovsky was on [Gotland](https://en.wikipedia.org/wiki/Gotland), twenty minutes away, he chose not to go: what he wanted to say could not have passed through an interpreter [7]. [_Winter Light_](https://en.wikipedia.org/wiki/Winter_Light) (1963) addresses faith and God's silence; _The Sacrifice_ was made with important Swedish collaborators, including Bergman's cinematographer Sven Nykvist. **[Robert Bresson's](https://en.wikipedia.org/wiki/Robert_Bresson)** [_Diary of a Country Priest_](https://en.wikipedia.org/wiki/Diary_of_a_Country_Priest) (1951) and **[Michelangelo Antonioni's](https://en.wikipedia.org/wiki/Michelangelo_Antonioni)** [_L'Avventura_](https://en.wikipedia.org/wiki/L%27Avventura) (1960) provide other routes into spiritual austerity and landscapes of absence.
+**[Ingmar Bergman](https://en.wikipedia.org/wiki/Ingmar_Bergman)** is a crucial predecessor and, at a distance, an interlocutor—though the two men never spoke. Tarkovsky first saw him in September 1984, from the audience at a Film Institute screening in Stockholm, and did not go up to him. A year later, at a film-poster exhibition in Stockholm's Film House, Michal Leszczylowski, Tarkovsky's editor on _The Sacrifice_, watched the two notice each other fifteen meters apart, turn at the same moment and walk off in opposite directions. Meetings were arranged and called off again and again; Anna-Lena Wibom, who produced _The Sacrifice_, recalled that the thought of needing an interpreter irritated Bergman, though the film scholar Dmitry Salynsky doubts that was the real obstacle [7]. [_Winter Light_](https://en.wikipedia.org/wiki/Winter_Light) (1963) addresses faith and God's silence; _The Sacrifice_ was made with important Swedish collaborators, including Bergman's cinematographer Sven Nykvist. **[Robert Bresson's](https://en.wikipedia.org/wiki/Robert_Bresson)** [_Diary of a Country Priest_](https://en.wikipedia.org/wiki/Diary_of_a_Country_Priest) (1951) and **[Michelangelo Antonioni's](https://en.wikipedia.org/wiki/Michelangelo_Antonioni)** [_L'Avventura_](https://en.wikipedia.org/wiki/L%27Avventura) (1960) provide other routes into spiritual austerity and landscapes of absence.
 
 **[Lars von Trier](https://en.wikipedia.org/wiki/Lars_von_Trier)** offers a documented line of influence. He has spoken repeatedly of his admiration for _Mirror_ and dedicated [_Antichrist_](<https://en.wikipedia.org/wiki/Antichrist_(film)>) (2009) to Tarkovsky. His [_Melancholia_](<https://en.wikipedia.org/wiki/Melancholia_(2011_film)>) (2011) makes a provocative companion to _The Sacrifice_: the world may end, but the possibility of redemption is entirely different.
 
@@ -171,18 +171,18 @@ These differences are the measure of Tarkovsky's reach. Influence matters most w
 
 ## An eight-film viewing route
 
-I would follow this sequence to study the lineage rather than merely assemble a list of slow films:
+I would follow this sequence to study the lineage rather than merely assemble a list of slow films (titles link to IMDb):
 
-1. **Chris Marker, _One Day in the Life of Andrei Arsenevich_ (1999).** The filmmaker, his work, and his last years, beginning with the reunion with his son.
-2. **Ingmar Bergman, _Winter Light_ (1963).** The silence of God before _The Sacrifice_.
-3. **Andrei Tarkovsky, _Mirror_ (1975).** How an individual remembers a century.
-4. **Terrence Malick, _The Tree of Life_ (2011).** The family and the universe in one visual thought.
-5. **Lars von Trier, _Melancholia_ (2011).** An apocalypse without Alexander's bargain.
-6. **Béla Tarr and [Ágnes Hranitzky](https://en.wikipedia.org/wiki/%C3%81gnes_Hranitzky), _Werckmeister Harmonies_ (2000).** Time without the same promise of transcendence.
-7. **Nuri Bilge Ceylan, _Once Upon a Time in Anatolia_ (2011).** Mystery and responsibility without supernatural rules.
-8. **Apichatpong Weerasethakul, _Memoria_ (2021).** Memory at the boundary of consciousness and the world.
+1. **Chris Marker, [_One Day in the Life of Andrei Arsenevich_](https://www.imdb.com/title/tt14586242/) (2000).** The filmmaker, his work, and his last years, beginning with the reunion with his son.
+2. **Ingmar Bergman, [_Winter Light_](https://www.imdb.com/title/tt0057358/) (1963).** The silence of God before _The Sacrifice_.
+3. **Andrei Tarkovsky, [_Mirror_](https://www.imdb.com/title/tt0072443/) (1975).** How an individual remembers a century.
+4. **Terrence Malick, [_The Tree of Life_](https://www.imdb.com/title/tt0478304/) (2011).** The family and the universe in one visual thought.
+5. **Lars von Trier, [_Melancholia_](https://www.imdb.com/title/tt1527186/) (2011).** An apocalypse without Alexander's bargain.
+6. **Béla Tarr and [Ágnes Hranitzky](https://en.wikipedia.org/wiki/%C3%81gnes_Hranitzky), [_Werckmeister Harmonies_](https://www.imdb.com/title/tt0249241/) (2000).** Time without the same promise of transcendence.
+7. **Nuri Bilge Ceylan, [_Once Upon a Time in Anatolia_](https://www.imdb.com/title/tt1827487/) (2011).** Mystery and responsibility without supernatural rules.
+8. **Apichatpong Weerasethakul, [_Memoria_](https://www.imdb.com/title/tt8399288/) (2021).** Memory at the boundary of consciousness and the world.
 
-Three worthwhile detours are Bresson's _Diary of a Country Priest_, Antonioni's _L'Avventura_, and Zvyagintsev's _The Return_. Then watch _The Sacrifice_ again.
+Three worthwhile detours are Bresson's [_Diary of a Country Priest_](https://www.imdb.com/title/tt0042619/), Antonioni's [_L'Avventura_](https://www.imdb.com/title/tt0053619/), and Zvyagintsev's [_The Return_](https://www.imdb.com/title/tt0376968/). Then watch [_The Sacrifice_](https://www.imdb.com/title/tt0091670/) again.
 
 ## One last tree
 
@@ -208,7 +208,7 @@ Complement with [_Directed by Andrei Tarkovsky_](https://jonathanrosenbaum.net/?
 4. [UPI, report from Tarkovsky's Milan press conference (10 July 1984)](https://www.upi.com/Archives/1984/07/10/Award-winning-Soviet-director-Andrei-Tarkovsky-said-today-he-has/3817458280000/).
 5. [Eye for Film, interview with Béla Tarr about _The Turin Horse_ (2011)](https://www.eyeforfilm.co.uk/feature/2011-06-21-interview-with-bela-tarr-about-turin-horse-feature-story-by-chris).
 6. [Eye Filmmuseum, _Mirror_ in the film programme accompanying its Nuri Bilge Ceylan exhibition](https://www.eyefilm.nl/en/whats-on/the-mirror/1377550).
-7. [Tarkovsky & Bergman, "Sweden: Gotland island"](https://tarkovskybergman.com/photo-essays/sweden-gotland-island/) (quotes Bergman's 2007 interview).
+7. [Gosfilmofond, "Невстреча с Бергманом"](https://tarkovskiy.gosfilmofond.ru/1984-september-15-nevstrecha-s-bergmanom/) (Russian; quotes Tarkovsky's diary, Michal Leszczylowski and Anna-Lena Wibom, with a commentary by Dmitry Salynsky); see also [_Vechernyaya Moskva_, "Бергман и Тарковский: несостоявшаяся встреча"](https://vm.ru/entertainment/196852-bergman-i-tarkovskij-nesostoyavshayasya-vstrecha) (Russian).
 8. [Alex Nemser and Nariman Skakov, English translations of the Arseny Tarkovsky poems in Andrei Tarkovsky's films, Nostalghia.com](https://www.nostalghia.com/TheTopics/Tarkovsky_Poems.html) (first published in Nathan Dunne, ed., _Tarkovsky_, Black Dog Publishing, 2008).
 
 For first-person materials: Tarkovsky's _Sculpting in Time_ and [_Time Within Time_](https://www.worldcat.org/title/25088374) (his diaries). For a family perspective, Marina Tarkovskaya's [_Oskolki zerkala_](https://search.worldcat.org/search?q=%22Oskolki+zerkala%22) (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
