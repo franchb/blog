@@ -22,9 +22,12 @@ const IMAGE_RE = /!\[[^\]]*\]\(\s*(?:<([^>]+)>|([^)\s]+))(?:\s+"[^"]*")?\s*\)/;
 // "Photo: Boris Baldin, CC BY-SA 4.0." inside the figure that holds the image
 const CREDIT_RE = /(?:^|\s)(?:Photo|Image|Фото)\s*:\s*(.+?)\.?$/i;
 
+// Plain text for a satori text node (never parsed as HTML). Dropping every
+// leftover angle bracket keeps "<scr<script>ipt>"-style input inert too.
 function stripTags(s: string): string {
   return s
-    .replace(/<[^>]+>/g, "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/[<>]/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
