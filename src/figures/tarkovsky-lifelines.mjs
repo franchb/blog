@@ -1,7 +1,7 @@
 // @ts-check
 /**
  * Data for the four-generation figure in
- * src/data/blog/the-house-the-father-and-the-tree-tarkovsky.md.
+ * src/content/posts/the-house-the-father-and-the-tree-tarkovsky.md.
  *
  * Rule: the figure must not know more than the essay. Every row restates a
  * fact the essay's text already gives, and `refs` point at the essay's own

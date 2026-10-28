@@ -2,7 +2,7 @@
 /**
  * Writes generated figures into blog posts.
  *
- *   pnpm figures          rewrite every figure block in src/data/blog
+ *   pnpm figures          rewrite every figure block in src/content/posts
  *   pnpm figures --check  exit 1 if any block is out of date (used in CI)
  *
  * A block is everything between `<!-- figure:NAME -->` and
@@ -21,7 +21,7 @@ const FIGURES = {
   "tarkovsky-lifelines": () => renderLifelines(tarkovskyLifelines),
 };
 
-const BLOG = fileURLToPath(new URL("../data/blog/", import.meta.url));
+const BLOG = fileURLToPath(new URL("../content/posts/", import.meta.url));
 const BLOCK = /^(<!-- figure:([\w-]+) -->\n)[\s\S]*?(^<!-- \/figure:\2 -->)$/gm;
 
 const check = process.argv.includes("--check");

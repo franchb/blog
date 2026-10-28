@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "src/data/blog/**"
+      - "src/content/posts/**"
       - "lychee.toml"
       - ".github/workflows/link-check.yml"
 
@@ -42,7 +42,7 @@ jobs:
           status=0
           ./lychee --config lychee.toml --no-progress \
             --format markdown --output lychee-report.md \
-            'src/data/blog/**/*.md' || status=$?
+            'src/content/posts/**/*.md' || status=$?
           cat lychee-report.md >> "$GITHUB_STEP_SUMMARY"
           cat lychee-report.md
           exit "$status"
