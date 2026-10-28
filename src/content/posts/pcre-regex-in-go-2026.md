@@ -1,193 +1,136 @@
 ---
-title: "Using PCRE Regex in Go in 2026: A Deep Dive"
+title: "PCRE in Go in 2026: wasm2go Is Ready, PCRE2 Isn't"
 author: franchb
-pubDatetime: 2026-04-25T09:00:00Z
+pubDatetime: 2026-10-28T10:00:00Z
 featured: true
 draft: false
 tags:
   - golang
   - regex
   - pcre
-  - wasm
+  - webassembly
   - supply-chain
-description: "Can you use PCRE2 in pure Go via WASM and wasm2go in 2026? The path works — but it is the wrong choice for production. A decision framework, including the supply-chain angle most posts miss."
+description: "wasm2go now carries go-sqlite3 and go-re2 without cgo, so why not PCRE2? Nobody maintains that build, the JIT can't come along, and backtracking on hostile input is a problem no runtime fixes. Until that changes I use regexp2 with limits."
 ---
 
-I have been shipping a Go-based WAF lately — pure Go, distroless image, no cgo, the kind of build where every dependency goes through a supply-chain review before it lands in `go.mod`. The trouble is that the rule corpus we inherited is written in PCRE, and Go's `regexp` package is RE2: no backreferences, no lookarounds, no possessive quantifiers, no recursion. So the question that surfaced was specific: can I compile PCRE2 to WebAssembly, transpile that Wasm to pure Go via [`ncruces/wasm2go`](https://github.com/ncruces/wasm2go), and ship a single static binary that speaks _real_ PCRE? I spent a few weekends on the experiment — building it, benchmarking it, reading the generated Go, and chasing down what it actually pulls into your supply chain. This post walks through what I found, why the path is technically viable, and why — for production — it is still the wrong tool.
+Earlier today I wrote about [a WAL-index bug in go-sqlite3](/posts/mapping-sqlite-wal-index-into-wasm-memory/), the SQLite driver that compiles SQLite to WebAssembly and translates the module into Go with [wasm2go](https://github.com/ncruces/wasm2go). I run it in production. The obvious next question is whether the same trick works for PCRE2. Go's `regexp` package is RE2, so it has no backreferences and no lookaround, and a lot of rule sets in the wild (ModSecurity rules, old Perl tooling) were written with PCRE in mind.
+
+The trick would work. I still wouldn't ship it today, and most of my reasons have nothing to do with wasm2go.
 
 ## Table of contents
 
-## The short answer
+## I had the wasm2go part wrong
 
-If you need PCRE-flavored matching in Go in 2026, default to [`dlclark/regexp2`](https://github.com/dlclark/regexp2). It is pure Go, actively maintained, and gives you the .NET regex flavor — close enough to PCRE for the vast majority of rule corpora, including the PCRE-ish ModSecurity rules most teams actually run. When you genuinely need PCRE2 semantics — recursion, named subroutines, the full Unicode property surface — fall back to the [`wasilibs`](https://github.com/wasilibs)-style pattern: ship the upstream library as a Wasm blob and execute it under [`wazero`](https://github.com/tetratelabs/wazero) at runtime. That stack is the production-grade approach for "C library in pure Go" and it is what `go-re2`, `go-pgquery`, and friends already do. AOT-transpiling the Wasm to Go via `wasm2go` works as a curiosity and as a one-off for `ncruces/go-sqlite3`, but it is not a production pattern, and the rest of this post is largely about why. The library to compile is PCRE2 10.47, not the long-dead PCRE 8.x line.
+I started drafting this post in April. Back then wasm2go looked like a side project: one maintainer, one serious consumer (his own go-sqlite3), very few tags. The draft said it wasn't production material and recommended running PCRE2 as a `.wasm` blob under [wazero](https://github.com/tetratelabs/wazero) instead, the way [wasilibs/go-re2](https://github.com/wasilibs/go-re2) did.
 
-## What wasm2go actually is
+Six months later the go-re2 history alone undoes that argument:
 
-[`wasm2go`](https://github.com/ncruces/wasm2go) is an AOT Wasm-to-Go transpiler. You feed it a `.wasm` module and it emits pure Go source — the linear memory becomes a `[]byte`, every Wasm instruction becomes Go, and the result compiles into your binary like any other dependency. No wazero at runtime, no interpreter, no `os/exec`. It is, structurally, the most "pure Go" you can get while still being driven by a C codebase.
+- [#234](https://github.com/wasilibs/go-re2/pull/234), May 20: adds a wasm2go backend.
+- [#251](https://github.com/wasilibs/go-re2/pull/251), July 8: makes wasm2go the default (released in v1.12.0).
+- [#276](https://github.com/wasilibs/go-re2/pull/276), September 25: retires the wazero backend.
 
-The trade-off is the part that does not survive the transpile. Wasm gives you a sandbox: bounds-checked memory, no syscalls without an explicit import, deterministic traps. After `wasm2go`, that sandbox is gone. The generated Go performs the same memory accesses, but they are now plain slice indexing inside your address space. A bug in PCRE2's matcher is no longer "the Wasm module aborts" — it is a panic, or worse, a silent overrun, in your binary.
+The current `go.mod` of go-re2 requires only `golang.org/x/sys`. The best-known example of "C library in Go via Wasm and wazero" no longer uses wazero.
 
-The maturity signals are the second half of the picture:
+wasm2go itself is at v0.4.19, and its [`USERS.md`](https://github.com/ncruces/wasm2go/blob/main/USERS.md) lists 21 libraries, among them bindings for libgit2, tree-sitter, HarfBuzz's subsetter, libavif and MicroPython. It is still one maintainer, which matters, but it is no longer one consumer.
 
-- **Maturity:** 111 stars, 2 forks, 78 commits, 1 tag — and one maintainer. Bus factor = 1.
-- **Real-world consumer:** exactly one — `ncruces/go-sqlite3` (926 stars, 593 dependents, v0.31.1, March 2026). That is the project demonstrating wasm2go works.
+## The sandbox survives the translation
 
-`go-sqlite3` is a serious project, and it is genuinely the best evidence that the pipeline produces a working binary. But "one author, one consumer" is not a tooling ecosystem — it is a personal project that one other personal project leans on. If `ncruces` stops shipping tomorrow, you own the transpiler.
+The other argument in my April draft was that translating Wasm to Go throws away the sandbox, so a memory bug in PCRE2 would become a memory bug in your process. That was wrong too, and wasm2go's [`SECURITY.md`](https://github.com/ncruces/wasm2go/blob/main/SECURITY.md) explains why. Linear memory is a single Go slice, and every load and store is bounds-checked against it. An out-of-range access panics. The call stack belongs to the Go runtime and can't be addressed from linear memory, and the code lives outside it. The README adds that even the optional `-unsafe` mode follows the [`unsafe.Pointer` rules](https://pkg.go.dev/unsafe#Pointer) and keeps the bounds checks.
 
-## PCRE flavor: PCRE2, not PCRE 8.x
+What the sandbox doesn't prevent is a bug in PCRE2 corrupting PCRE2's own heap inside linear memory. That gives you wrong match results or a panic, never a write into Go memory. wazero has exactly the same property, so it isn't a reason to prefer one runtime over the other. The practical difference is that a trap shows up as a Go panic, so a wrapper has to recover at its API boundary and return an error.
 
-A surprising number of Go-and-PCRE posts still link to the old PCRE 8.x line. Do not. **PCRE 8.45 (2021) is the final PCRE1 release** — Philip Hazel has been explicit that he does not want to encourage further PCRE1 use, and he has refused requests to migrate the PCRE2Project organization to host PCRE1 specifically because making it more discoverable would be the wrong signal. PCRE1 is in the "security fixes only, and even those grudgingly" phase. Treat it as deprecated.
+The project frames this with Chromium's [Rule of Two](https://chromium.googlesource.com/chromium/src/+/main/docs/security/rule-of-2.md): pick at most two of an unsafe implementation language, untrustworthy input and high privilege. A regex engine in a WAF is C code reading attacker-controlled bytes, so it already has two. Running it inside a bounds-checked slice is the point. One caveat from the README: wasm2go assumes the Wasm module itself is trusted. That's fine here, because you build the module. Patterns and subjects are data.
 
-The library you actually want is PCRE2. **PCRE2 10.47 (21 Oct 2025) is the current release**, and **10.48 is on master** as of this writing. The API is different from PCRE1 — `pcre2_compile_8`, `pcre2_match_8`, the `_8`/`_16`/`_32` suffix scheme for code-unit width — but it is the line under active development.
+So on the runtime question, wasm2go is good enough. The costs that remain are about PCRE2.
 
-One detail matters specifically for the Wasm path: **PCRE2 10.30+ is heap-recursive**. Prior versions used C stack recursion in the matcher, which on a Wasm linear-memory build with a small default stack would blow up on any non-trivial backtracking. Heap recursion makes deep matches a memory-pressure problem instead of a stack-overflow problem, which is the right trade for Wasm.
+## What PCRE2 gives you that regexp2 doesn't
 
-License-wise: **BSD-3-Clause WITH PCRE2-exception**. The exception clause explicitly permits linking into closed-source software without imposing source-disclosure obligations on the linker. If your legal team has a list of acceptable OSS licenses, PCRE2 lands cleanly on it.
+[dlclark/regexp2](https://github.com/dlclark/regexp2) is a pure-Go port of the .NET regex engine, now at v2.11.0. Its README has a full comparison table. Next to Go's `regexp` it adds lookahead, lookbehind, backreferences (numbered and named), atomic groups, possessive quantifiers, conditionals, `\R` and `\X`.
 
-## The compilation pipeline
+Here is what it lacks next to PCRE2. I checked these against the parser source: the group parser in `syntax/parser.go` accepts `:`, `=`, `!`, `>`, `'`, `<`, `(` and `P` after `(?`, and nothing else.
 
-If you do walk this path — Wasm-blob or AOT-transpiled — the compilation half of the pipeline is the same. Here is what you actually have to decide.
+| PCRE2 feature           | Syntax             | regexp2 |
+| ----------------------- | ------------------ | ------- |
+| Reset match start       | `\K`               | no      |
+| Whole-pattern recursion | `(?R)`             | no      |
+| Subroutine calls        | `(?1)`, `(?&name)` | no      |
+| Callouts                | `(?C1)`            | no      |
+| Branch reset            | `(?\|a\|b)`        | no      |
 
-### JIT is off the table on Wasm
+If your patterns don't use any of these five, you don't need PCRE2. Grep your rule set before you decide.
 
-PCRE2 ships with an optional JIT backend powered by `sljit`, and on a native build that JIT is the entire reason PCRE2 is fast. On Wasm, you do not get it. `sljit` does not list Wasm as a target — there is no Wasm code generator, and even if there were, the runtime model forbids it: Wasm explicitly does not allow RWX memory pages, and codegen-then-execute is the one thing the sandbox is designed to prevent. So the configure invocation is straightforward:
+## What it would cost to build
 
-```bash
-./configure --host=wasm32-wasi \
-  --disable-jit \
-  --disable-shared \
-  --enable-static \
-  --enable-pcre2-8 \
-  --enable-unicode
+### Nobody maintains the build
+
+There is no `wasilibs/go-pcre2`, and nothing PCRE-shaped in wasm2go's users list (which calls itself incomplete, so the honest statement is that I couldn't find one). The closest prior attempt is [bobby-stripe/go-pcre](https://github.com/bobby-stripe/go-pcre). Its last tag is v1.0.1 from 2021, it bundles PCRE2 10.38 (`PCRE2_DATE 2021-10-01` in its header), and it runs on an older Wasm interpreter called gasm, not wazero or wasm2go.
+
+So you would own the pipeline: PCRE2 C source, a wasi-sdk build with the JIT disabled, a wasm2go run, and a Go API on top that copies subjects in and match offsets out. PCRE2 shipped 10.47 on 2025-10-21, 10.48 on 2026-08-31 and 10.49 on 2026-09-28. Its [`SUPPORT-LIFECYCLE.md`](https://github.com/PCRE2Project/pcre2/blob/master/SUPPORT-LIFECYCLE.md) promises at least five years of security backports per release, published as `release/pcre2-10.xx` branches. Staying current means rebuilding and re-translating on every one of those. That's ordinary work, but it's work you'd do alone.
+
+Use PCRE2, not PCRE1. The PCRE2 README says plainly that "the original PCRE1 library is now obsolete and no longer maintained." One detail helps the Wasm build: since 10.30 (August 2017) the interpreter no longer uses recursive function calls to remember backtracking positions, so deep backtracking costs heap rather than the small Wasm stack.
+
+### The JIT doesn't come along
+
+[`pcre2jit(3)`](https://github.com/PCRE2Project/pcre2/blob/master/doc/pcre2jit.3) lists the platforms the JIT supports: 32- and 64-bit ARM, IBM s390x, x86 and x86-64, LoongArch, MIPS, PowerPC and RISC-V. WebAssembly isn't on the list, and the same page says configuring with `--enable-jit` on an unsupported platform fails the build. A Wasm module also has no way to generate machine code and jump to it. So the interpreter is all you get.
+
+The docs only say the JIT "can greatly speed up pattern matching". I haven't measured the gap on a realistic rule set, and the figures I've seen quoted vary too much to repeat here. If you're considering this path, measure first with a native build: `pcre2test -t` against `pcre2test -jit -t` on your own patterns and traffic samples. The JIT is a big part of why people pick PCRE2 for WAF-style workloads, so losing it may cancel most of the reason to want PCRE2.
+
+### Backtracking on hostile input
+
+PCRE2 and regexp2 are both backtracking engines, so both can take exponential time on the wrong pattern and input. The runtime doesn't change that. Both offer limits:
+
+- PCRE2: `pcre2_set_match_limit`, `pcre2_set_depth_limit` and `pcre2_set_heap_limit` on the match context.
+- regexp2: a backtracking stack capped at 100,000 slots by default (`OptionMaxBacktrackingStackSize`), plus `MatchTimeout`. The README notes that the stack cap bounds memory, not time, so set the timeout as well. It costs a background clock that ticks about every 100 ms, at about 0.15% CPU while any timed match is live.
+
+RE2 has no such problem, because it guarantees time linear in the input. That's the choice [OWASP Coraza](https://github.com/corazawaf/coraza) made. In v3 the `@rx` operator compiles rules with Go's `regexp` (and `rsc.io/binaryregexp` for patterns that match non-UTF-8 bytes), and [coraza-wasilibs](https://github.com/corazawaf/coraza-wasilibs) can swap in go-re2 for speed. The v2-era PCRE plugin, [jptosso/coraza-pcre](https://github.com/jptosso/coraza-pcre), wraps the cgo PCRE1 binding `gijsbers/go-pcre`. Its README says it "is only intended for compatibility", and its last commit is from June 2022. The Go WAF with the most PCRE-shaped rule set chose a linear-time engine.
+
+## What I'd use
+
+Start with the least powerful engine that fits your patterns:
+
+1. Go's `regexp` when RE2 syntax is enough. Reach for go-re2 if you have large inputs or complex patterns; its README warns it is slower than the standard library on small ones.
+2. regexp2 when you need lookaround or backreferences. Set both limits:
+
+```go
+import (
+	"errors"
+	"time"
+
+	"github.com/dlclark/regexp2/v2"
+)
+
+func compileRule(pattern string) *regexp2.Regexp {
+	re := regexp2.MustCompile(pattern,
+		regexp2.OptionMaxBacktrackingStackSize(100_000), // the default, made explicit
+	)
+	re.MatchTimeout = 50 * time.Millisecond
+	return re
+}
+
+func matches(re *regexp2.Regexp, subject string) (bool, error) {
+	ok, err := re.MatchString(subject)
+	if errors.Is(err, regexp2.ErrBacktrackingStackLimit) {
+		// the pattern hit the stack cap: log it, and decide whether to block
+		return false, err
+	}
+	return ok, err // err is non-nil here only on timeout
+}
 ```
 
-Once you pass `--disable-jit`, several other build-time concerns vanish. PCRE2's JIT path uses `setjmp`/`longjmp` for recoverable matcher errors, and that is the part of the C runtime that Wasm/WASI does not love; with the JIT off, the interpreter path does not need it.
+3. PCRE2 through wasm2go only if a pattern you can't rewrite needs one of the five features above, and you're willing to own the build for years.
 
-### The performance penalty
+cgo bindings ([jemmic/go-pcre2](https://github.com/jemmic/go-pcre2) for PCRE2, [GRbit/go-pcre](https://github.com/GRbit/go-pcre) for PCRE1) give you the real library with the JIT, and they cost exactly what made me pick go-sqlite3: a C toolchain in the build and no clean cross-compilation. [modernc.org/libpcre2-8](https://gitlab.com/cznic/libpcre2) uses ccgo to translate PCRE2's C straight to Go. That avoids both cgo and Wasm, but the generated code is per-platform and the API is low-level.
 
-Turning the JIT off is not a free choice. The JIT-off slowdown is **3–10× typical, 15–25× worst case** on backtracking-heavy patterns. The bottom of that range is what most simple anchored patterns will see; the top of it is what catastrophic-backtracking patterns will do to you when the JIT is not there to cut early. Those bands come from third-party measurements — OpenResty's nginx-with-PCRE benchmarks, GNOME GtkSourceView's syntax-highlighting benchmarks, and the `pg_jitter` PostgreSQL plugin's regex-extension numbers — not from anything I ran myself. Treat them as the public ranges to plan against.
+## What would change my mind
 
-### Toolchain choice
-
-Two realistic ways to produce the `.wasm`: [`wasi-sdk`](https://github.com/WebAssembly/wasi-sdk) or Emscripten. Pick `wasi-sdk`. It is leaner, it is closer to a normal cross-compiler, and the WASI ABI is the one wazero and `wasm2go` both speak natively. Emscripten will happily produce a working PCRE2 build, but it also wants to give you a JavaScript shim, an HTML harness, and an `EM_ASM` integration story you do not need on the server. The shim alone is dead weight in a Go binary.
-
-### Binary size and boundary cost
-
-A clean `--disable-jit`, `--enable-pcre2-8`, Unicode-enabled PCRE2 build comes out to roughly **400–700 kB of Wasm**, of which **150–250 kB is Unicode tables** — the property tables, case-folding data, script and category metadata. You can claw some of that back by disabling Unicode, but if you are reaching for PCRE2 you almost certainly want `\p{...}`, so plan to pay it.
-
-The cost that bites harder than binary size is the boundary. Going from Go into a Wasm guest — whether under wazero or after `wasm2go` — costs roughly **50–100× the overhead per call versus a pure-Go function call on tiny inputs**. The translation layer, parameter marshaling, and linear-memory copies dominate when the actual match work is microscopic. The mitigation is to batch: send a buffer of lines, get a buffer of results, never call across the boundary one short string at a time. If your workload cannot batch, the boundary cost will eat the entire performance budget before backtracking does.
-
-## Prior art: one stale experiment, and a telling counter-example
-
-Whenever a path "should" exist, the most useful thing you can do is check whether it _already_ exists. For PCRE2-in-pure-Go, it almost does — and the way it almost-does is the most informative signal in the entire analysis.
-
-The closest thing to prior art is [`bobby-stripe/go-pcre`](https://github.com/bobby-stripe/go-pcre). The repo exists, the code compiles, and it bundles a Wasm build of PCRE2. The problems are the dates and the dependents. Last tag: **v1.0.1 (Oct 2021)**. Bundled library: **PCRE2 10.38**. Importers on **pkg.go.dev**: **zero**. That is one experiment, abandoned for over four years, shipping a PCRE2 release that predates several CVEs, with nobody depending on it. It is exactly the kind of "yes, it exists" link that looks reassuring in a search result and falls apart on five seconds of due diligence.
-
-The counter-example is sharper. OWASP Coraza is the most credible Go-native WAF in the ecosystem. Coraza v2 had an optional cgo-backed PCRE plugin called `coraza-pcre`. In v3, that plugin was removed and the engine is RE2-only. Anuraag Agrawal's CNCF talk on the migration lays out the rationale — supply-chain, deployability, performance under realistic rule sets — and it is the most direct statement of "we tried PCRE in production Go and we deliberately walked away from it" that I am aware of.
-
-The third data point is `wasilibs` itself. The project ships [`go-re2`](https://github.com/wasilibs/go-re2), [`go-aho-corasick`](https://github.com/wasilibs/go-aho-corasick), [`go-pgquery`](https://github.com/wasilibs/go-pgquery), [`go-yamllint`](https://github.com/wasilibs/go-yamllint), and a half-dozen others. They have industrialized "C library in pure Go via Wasm" as a pattern. They have not shipped a `go-pcre2`. The team that knows exactly how to do this — has the tooling, the build infrastructure, the release pipeline — has chosen not to do it.
-
-That pattern, more than any benchmark, is the most important data point in this whole analysis: the people best-equipped to ship PCRE2-in-pure-Go have looked at the problem and declined.
-
-## The realistic alternatives
-
-If `wasm2go` is not the answer for production Go in 2026, what is? The honest answer depends on which PCRE features you actually need and how much of your deployment story you are willing to renegotiate. Four families of alternatives are worth considering, in roughly descending order of practicality.
-
-### dlclark/regexp2
-
-[`dlclark/regexp2`](https://github.com/dlclark/regexp2) is the default recommendation for almost every team that thinks they need PCRE in Go. **~1.2k stars, pure-Go .NET-port backtracking NFA**. It is a faithful Go translation of the .NET `System.Text.RegularExpressions` engine, which means lookbehinds, lookaheads, named groups, atomic groups, conditional patterns, balancing groups, and most of the .NET dialect work out of the box. The flavor is not byte-identical to PCRE2 — there is **no `\K`, no `(?R)` recursion, no callouts** — but it covers the vast majority of patterns that real codebases ship.
-
-- **Pure Go**: zero cgo, zero Wasm runtime, one `go.mod` line. Cross-compiles to every Go target without a thought.
-- **`MatchTimeout` uses a shared ticker goroutine** that wakes roughly every **~100 ms** to check active matches against their deadline. The ticker burns approximately **0.15% background CPU** while any match is in flight and is **mandatory on untrusted input** — backtracking engines without a timeout are a denial-of-service vector by construction.
-- **Performance**: in the same RE2-vs-PCRE2 ballpark for pathological patterns — slower than RE2 on simple patterns, faster than naive backtrackers, occasionally catastrophic on unconstrained alternation. The timeout is what makes this safe, not the engine speed.
-
-If your patterns work in `regexp2` and you can tolerate a deadline-bounded matcher, stop reading. This is the answer.
-
-### cgo paths
-
-The cgo route — [`GRbit/go-pcre`](https://github.com/GRbit/go-pcre), [`jemmic/go-pcre2`](https://github.com/jemmic/go-pcre2), and a handful of older bindings — gives you genuine PCRE/PCRE2 with the JIT, full feature parity, and the same flavor your Perl scripts already use. It also gives you a C toolchain in your build, libpcre2 in your runtime, and a full retreat from distroless and pure-Go cross-compilation. For most of the deployment targets that motivated this whole inquiry — small images, scratch-based containers, `GOOS=linux GOARCH=arm64` from a Mac without Docker — cgo is disqualifying. Worth a mention only because it is what you would reach for if those constraints did not exist.
-
-### Rust paths
-
-The Rust-via-FFI options — [`rure-go`](https://github.com/BurntSushi/rure-go) wrapping the `regex` crate, or [`fancy-regex`](https://github.com/fancy-regex/fancy-regex) which adds backreferences and lookaround on top of it — solve a different problem. The Rust regex flavor is **not PCRE2**: no recursion, no callouts, different escape semantics in several edge cases, and a deliberately RE2-shaped subset for `regex` proper. If your goal was PCRE2 compatibility, switching to Rust regex is a flavor migration, not a flavor preservation. The fact that the FFI surface is also cgo-shaped only adds insult.
-
-### ccgo
-
-The `ccgo`-based path — [`go.elara.ws/pcre`](https://gitea.elara.ws/Elara6331/pcre) and the `modernc.org/libpcre2-*` family — is the closest thing to genuine pure-Go PCRE2 available today. `ccgo` transpiles C source to Go, giving you a real PCRE2 implementation that compiles into a pure-Go binary with no cgo and no Wasm runtime. It is a niche path: maintained largely by one developer, used in modernc's SQLite stack and a few derivatives, and still subject to all the C-to-Go transpilation caveats around build times, generated code size, and the long supply chain from PCRE2 source through `ccgo` through your binary. If you must have PCRE2-the-flavor in pure Go today, this is the most viable path — but "viable" and "production-default" are different categories.
-
-## Decision matrix
-
-The trade-offs collapse to the following table. Verdicts are short by design — this is a triage tool, not a benchmark report.
-
-| Approach                 | Pure-Go | Cross-compile | PCRE coverage                     | Runtime cost                   | Ops                           | Supply chain         |
-| ------------------------ | ------- | ------------- | --------------------------------- | ------------------------------ | ----------------------------- | -------------------- |
-| `dlclark/regexp2`        | yes     | yes           | partial (no `\K`/`(?R)`/callouts) | timeout-bounded, ~tiny         | trivial; active (1.2k stars)  | 1 SBOM line          |
-| `wasilibs` WASM + wazero | yes     | yes           | full PCRE2                        | 3–10× slower, +1–3 MB          | moderate; active              | WASM blob, signed    |
-| `wasm2go`                | yes     | yes           | full PCRE2                        | ~PCRE2 JIT-off, +1–3 MB        | heavy transpile; 1 maintainer | C → WASM → Go (long) |
-| cgo bindings             | no      | via cgo       | full PCRE2 (with JIT)             | best (native + JIT), +0.5–1 MB | C toolchain; active           | C in your tree       |
-| Rust bindings            | no      | via cgo       | Rust flavor — different           | best (RE2-class), +0.5–1 MB    | Rust + cgo; active            | Rust + C in tree     |
-| ccgo PCRE2               | yes     | yes           | full PCRE2                        | ~PCRE2 JIT-off, +0.5–1 MB      | heavy transpile; 1 maintainer | C → ccgo → Go (long) |
-
-The matrix shows why the verdict from the short answer holds. Only three rows are simultaneously pure-Go and cross-compile-clean, and of those three, exactly one has both an active maintainer community and a trivial integration story — `dlclark/regexp2`. The two transpilation paths (`wasm2go` and `ccgo`) trade a long, single-maintainer supply chain for full PCRE2 flavor, which is a defensible trade in narrow circumstances and a hard sell as a default. Everything else either gives up pure-Go or gives up PCRE2.
-
-## Supply-chain posture under SLSA and distroless
-
-Long-time readers will know I think SLSA L3 should be table stakes for anything AI-adjacent or security-adjacent in 2026; the same lens applies here. The differences between these approaches under that lens are larger than the runtime benchmarks that usually dominate the conversation.
-
-- **`dlclark/regexp2` wins outright.** One Go module, one SBOM line, one Cosign signature, one SLSA provenance. Distroless has no surprises: no native code, no embedded blob, no second toolchain.
-- **The `wasilibs` pattern is the right second choice.** Cosign has first-class Wasm support — sign the `.wasm` and the Go binary independently, verify both at deploy. The wazero sandbox preserves a defense-in-depth layer the cgo and ccgo paths cannot match.
-- **`wasm2go` has a longer provenance chain than any of the above.** The artifact is generated Go, but its real ingredients are PCRE2 C source, a wasi-sdk LLVM toolchain, a wasi-libc layer, the wasm2go transpiler, and Go. Standard SBOM tools (`syft`, `trivy`) will not introspect generated Go back to those ingredients — tracking that chain falls on you.
-
-If your security model demands SLSA L3 and distroless, it should also ask hard questions about a six-stage transpilation chain owned by one developer.
-
-## Concrete recommendation
-
-Three operating instructions in order of preference.
-
-### Default: `dlclark/regexp2`
-
-Use it. Set `MatchTimeout` on every compiled instance — non-negotiable on untrusted input, since the engine is backtracking and ReDoS-vulnerable without a cap. If a pattern from an external rule set fails to compile, rewrite it or move that rule to a separate engine.
-
-```bash
-go get github.com/dlclark/regexp2
-```
-
-### Fallback: a fresh `go-pcre2` in the wasilibs style
-
-If you genuinely need full PCRE2 flavor — typically because you are consuming an external rule corpus — build a wasilibs-style module: PCRE2 10.47 with `--disable-jit`, compiled via wasi-sdk, the resulting `.wasm` embedded with `go:embed`, wazero as the runtime. Nobody has walked this path for PCRE2 yet; you would be the first.
-
-```bash
-# rough outline — not a copy-paste recipe
-./configure --disable-jit --enable-static CC=$WASI_SDK/bin/clang \
-            --host=wasm32-wasi --prefix=$PWD/build
-make && make install
-# pack build/lib/libpcre2-8.wasm into your Go module via go:embed,
-# then load it with wazero at init() time
-```
-
-### Narrow case: `wasm2go`
-
-Only consider this if you have all three: a no-wazero-at-runtime constraint, budget to own `wasm2go` as a build-time dependency with its single-maintainer risk, and willingness to audit the generated Go on every regeneration. Otherwise the wasilibs path is strictly better.
-
-```bash
-# representative invocation; the real flow is wrapped in a build script
-wasm2go transpile pcre2.wasm > internal/pcre2/pcre2.go
-go build ./...
-```
-
-## Conclusion
-
-The single most important input to this decision is not a benchmark. It is revealed preference. The two groups with the strongest incentive and capability to ship PCRE-in-Wasm for Go — `wasilibs`, who invented the WASM-blob-plus-wazero pattern, and the OWASP Coraza maintainers, who had the most acute PCRE-shaped problem in the Go ecosystem — both looked at this design space and chose not to. `wasilibs` shipped `go-re2` and stopped there. Coraza migrated off PCRE entirely. That is the ecosystem telling you the bench numbers do not justify the operational and supply-chain cost. Use `dlclark/regexp2`, set a timeout, and move on; the calculus changes the moment a `wasilibs/go-pcre2` repo appears with a real maintainer behind it.
+A maintained `go-pcre2` on wasm2go, released alongside each PCRE2 version, with honest benchmarks against a native JIT build. The pieces are all there now: wasm2go is proven on larger C codebases than PCRE2, and go-re2 shows how to wrap a regex engine around it. If someone publishes it, option 3 becomes "import it", and I'd use it for the patterns regexp2 can't handle.
 
 ## Links
 
-- [ncruces/wasm2go](https://github.com/ncruces/wasm2go) — AOT Wasm-to-Go transpiler, the subject of this post
-- [bobby-stripe/go-pcre](https://github.com/bobby-stripe/go-pcre) — the stale Wasm-bundling experiment, last touched 2021
-- [dlclark/regexp2](https://github.com/dlclark/regexp2) — pure-Go .NET-port regex engine, the recommended default
-- [wasilibs/go-re2](https://github.com/wasilibs/go-re2) — the canonical WASM-blob-plus-wazero pattern
-- [OWASP Coraza](https://github.com/corazawaf/coraza) — WAF that walked away from PCRE for RE2
-- [PCRE2](https://www.pcre.org/) — the reference C implementation
-- [wazero](https://github.com/tetratelabs/wazero) — Tetrate-sponsored Wasm runtime in pure Go
-- [ncruces/go-sqlite3](https://github.com/ncruces/go-sqlite3) — wasm2go's flagship consumer
-- [SLSA](https://slsa.dev/) — Supply-chain Levels for Software Artifacts
-- [Sigstore Cosign](https://github.com/sigstore/cosign) — signing and verification for OCI artifacts and Wasm
+- [ncruces/wasm2go](https://github.com/ncruces/wasm2go): the Wasm-to-Go translator, with its [users list](https://github.com/ncruces/wasm2go/blob/main/USERS.md) and [security notes](https://github.com/ncruces/wasm2go/blob/main/SECURITY.md)
+- [wasilibs/go-re2](https://github.com/wasilibs/go-re2): RE2 via wasm2go since v1.12.0
+- [dlclark/regexp2](https://github.com/dlclark/regexp2): pure-Go .NET-flavor regex, and [regexp2cg](https://github.com/dlclark/regexp2cg) for code-generated matchers
+- [PCRE2](https://github.com/PCRE2Project/pcre2): upstream, with the [JIT docs](https://github.com/PCRE2Project/pcre2/blob/master/doc/pcre2jit.3) and [support lifecycle](https://github.com/PCRE2Project/pcre2/blob/master/SUPPORT-LIFECYCLE.md)
+- [OWASP Coraza](https://github.com/corazawaf/coraza) and [coraza-wasilibs](https://github.com/corazawaf/coraza-wasilibs)
+- [bobby-stripe/go-pcre](https://github.com/bobby-stripe/go-pcre): the 2021 PCRE2-in-Wasm experiment
+- [Mapping SQLite's WAL-Index into WebAssembly Memory](/posts/mapping-sqlite-wal-index-into-wasm-memory/): the go-sqlite3 post this one follows
