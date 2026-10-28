@@ -1,6 +1,6 @@
 ---
-layout: ../layouts/AboutLayout.astro
 title: "About"
+description: "A bit about me and this blog."
 ---
 
 I am a software engineer now. In my past days I was a medical student and a balloon design company owner.
