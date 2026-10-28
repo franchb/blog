@@ -12,7 +12,8 @@
     "astro": "astro",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "figures": "node src/figures/render.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
