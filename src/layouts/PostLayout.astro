@@ -6,15 +6,25 @@ type Props = {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogTitle?: string;
   canonicalURL?: string;
+  tags?: string[];
   pubDatetime?: Date;
   modDatetime?: Date | null;
 };
 
 const { site } = config;
 
-const { title, description, ogImage, canonicalURL, pubDatetime, modDatetime } =
-  Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  ogTitle,
+  canonicalURL,
+  pubDatetime,
+  modDatetime,
+  tags = [],
+} = Astro.props;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -33,7 +43,7 @@ const structuredData = {
 };
 ---
 
-<Layout {title} {description} {ogImage} {canonicalURL}>
+<Layout {title} {description} {ogImage} {ogTitle} {canonicalURL}>
   <Fragment slot="head">
     <!-- Override og:type for article pages -->
     <meta property="og:type" content="article" />
@@ -50,6 +60,11 @@ const structuredData = {
         content={modDatetime.toISOString()}
       />
     )}
+
+    <meta property="article:author" content={site.author} />
+    {tags.map(tag => (
+      <meta property="article:tag" content={tag} />
+    ))}
 
     <script
       type="application/ld+json"
