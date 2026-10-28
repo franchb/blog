@@ -198,7 +198,9 @@ export function renderLifelines(spec) {
     }
     const links = [];
     if (row.see) {
-      links.push(`<a href="${esc(row.see.href)}">${esc(row.see.label)}</a>`);
+      links.push(
+        `<a href="${esc(row.see.href)}" aria-label="Section: ${esc(row.see.label)}">§&nbsp;${esc(row.see.label)}</a>`
+      );
     }
     for (const n of row.refs ?? []) {
       links.push(`<a href="${SOURCES}" aria-label="source ${n}">[${n}]</a>`);
