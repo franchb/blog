@@ -17,6 +17,10 @@ const posts = defineCollection({
       draft: z.boolean().optional(),
       tags: z.array(z.string()).default(["others"]),
       ogImage: image().or(z.string()).optional(),
+      /** Hero photo for the generated OG card, relative to the post file; "none" = typographic card. Defaults to the first local image in the post. */
+      ogHero: z.string().optional(),
+      /** Credit line drawn on the OG card; defaults to the "Photo: …" text in the hero's figcaption. */
+      ogHeroCredit: z.string().optional(),
       description: z.string(),
       canonicalURL: z.string().optional(),
       hideEditPost: z.boolean().optional(),
