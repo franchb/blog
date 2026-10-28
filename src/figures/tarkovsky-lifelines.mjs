@@ -36,7 +36,7 @@ export default {
     {
       id: "alexander",
       name: "Alexander K.",
-      bio: "<strong>Alexander Karlovich Tarkovsky</strong>, 1862–1924. A populist revolutionary of the 1880s: three years in tsarist prisons, five in Siberian exile.",
+      bio: "<strong>Alexander Karlovich Tarkovsky</strong>, 1862–1924. In the 1880s, a member of a populist circle linked to Narodnaya Volya: three years in prison, five in Siberian exile.",
       before: true,
     },
     {
@@ -66,7 +66,7 @@ export default {
       datetime: "1880",
       marks: { alexander: "event" },
       title: "Prison and exile",
-      text: "Alexander Karlovich, a member of a populist circle, spends three years in tsarist prisons and five in exile in Eastern Siberia.",
+      text: "Alexander Karlovich, in a populist circle linked to Narodnaya Volya, the organization that had assassinated Alexander II, serves three years in prison and five in exile in Eastern Siberia.",
       see: FATHER,
       refs: [10],
     },
@@ -99,9 +99,9 @@ export default {
       datetime: "1921",
       marks: { arseny: "hedged" },
       title: "Arrest and escape, as later told",
-      text: "An anti-Lenin acrostic, an arrest, an escape on the way to trial. Widely retold; not every detail can be checked.",
+      text: "An anti-Lenin acrostic in a local newspaper, an arrest, and an escape on the way to trial.",
       see: FATHER,
-      refs: [2],
+      refs: [2, 10],
     },
     { type: "end-era" },
     {
@@ -270,5 +270,5 @@ export default {
     },
   ],
   caption:
-    'The people this essay follows, one lane per life, with time running down the page and long silences marked. Each row links to the section that tells its story and to the numbered sources. Tarkovsky also had an elder son, Arseny (born 1962), from his first marriage, to <a href="https://en.wikipedia.org/wiki/Irma_Raush">Irma Raush</a>; this essay follows the younger son, Andrei.',
+    'The people this essay follows, one lane per life, with time running down the page and long silences marked. Each row links (§) to the section of the essay that tells its story, and to the numbered sources. Tarkovsky also had an elder son, Arseny (born 1962), from his first marriage, to <a href="https://en.wikipedia.org/wiki/Irma_Raush">Irma Raush</a>; this essay follows the younger son, Andrei.',
 };
