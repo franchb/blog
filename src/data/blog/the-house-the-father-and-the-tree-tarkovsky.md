@@ -274,7 +274,7 @@ And perhaps this is where an account of Tarkovsky's world influence should end: 
 9. [Gosfilmofond, «Уход отца»](https://tarkovskiy.gosfilmofond.ru/1937-leto-ukhod-ottsa/) (Russian; Arseny leaves the family in the summer of 1937, told from Marina Tarkovskaya's memoirs, with a commentary by Dmitry Salynsky).
 10. [Valery Shubinsky, interviewed by Alexei Chernikov, «Малолетний „террорист“ и любимец женщин. Каким был последний поэт Серебряного века Арсений Тарковский», _Snob_ (2024)](https://snob.ru/literature/terrorist-lovelas-kaleka-kakim-byl-poet-arsenii-tarkovskii/) (Russian).
 
-For first-person materials: Tarkovsky's _Sculpting in Time_ and [_Time Within Time_](https://www.worldcat.org/title/25088374) (his diaries). For a family perspective, Marina Tarkovskaya's [_Oskolki zerkala_](https://search.worldcat.org/search?q=%22Oskolki+zerkala%22) (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's _One Day in the Life of Andrei Arsenevich_ and Andrei Tarkovsky Jr.'s _A Cinema Prayer_ (2019).
+For first-person materials: Tarkovsky's [_Sculpting in Time_](https://search.worldcat.org/title/sculpting-in-time-reflections-on-the-cinema/oclc/31736519) and [_Time Within Time_](https://www.worldcat.org/title/25088374) (his diaries). For a family perspective, Marina Tarkovskaya's [_Oskolki zerkala_](https://search.worldcat.org/search?q=%22Oskolki+zerkala%22) (_Shards of the Mirror_). For films about the filmmaker: Chris Marker's [_One Day in the Life of Andrei Arsenevich_](https://en.wikipedia.org/wiki/One_Day_in_the_Life_of_Andrei_Arsenevich) (2000) and Andrei Tarkovsky Jr.'s [_A Cinema Prayer_](https://www.labiennale.org/en/cinema/2019/venice-classics/andrey-tarkovsky-cinema-prayer) (2019).
 
 ## Image credits
 
