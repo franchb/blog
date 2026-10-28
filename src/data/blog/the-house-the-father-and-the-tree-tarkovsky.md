@@ -171,18 +171,18 @@ These differences are the measure of Tarkovsky's reach. Influence matters most w
 
 ## An eight-film viewing route
 
-I would follow this sequence to study the lineage rather than merely assemble a list of slow films:
+I would follow this sequence to study the lineage rather than merely assemble a list of slow films (titles link to IMDb):
 
-1. **Chris Marker, _One Day in the Life of Andrei Arsenevich_ (2000).** The filmmaker, his work, and his last years, beginning with the reunion with his son.
-2. **Ingmar Bergman, _Winter Light_ (1963).** The silence of God before _The Sacrifice_.
-3. **Andrei Tarkovsky, _Mirror_ (1975).** How an individual remembers a century.
-4. **Terrence Malick, _The Tree of Life_ (2011).** The family and the universe in one visual thought.
-5. **Lars von Trier, _Melancholia_ (2011).** An apocalypse without Alexander's bargain.
-6. **Béla Tarr and [Ágnes Hranitzky](https://en.wikipedia.org/wiki/%C3%81gnes_Hranitzky), _Werckmeister Harmonies_ (2000).** Time without the same promise of transcendence.
-7. **Nuri Bilge Ceylan, _Once Upon a Time in Anatolia_ (2011).** Mystery and responsibility without supernatural rules.
-8. **Apichatpong Weerasethakul, _Memoria_ (2021).** Memory at the boundary of consciousness and the world.
+1. **Chris Marker, [_One Day in the Life of Andrei Arsenevich_](https://www.imdb.com/title/tt14586242/) (2000).** The filmmaker, his work, and his last years, beginning with the reunion with his son.
+2. **Ingmar Bergman, [_Winter Light_](https://www.imdb.com/title/tt0057358/) (1963).** The silence of God before _The Sacrifice_.
+3. **Andrei Tarkovsky, [_Mirror_](https://www.imdb.com/title/tt0072443/) (1975).** How an individual remembers a century.
+4. **Terrence Malick, [_The Tree of Life_](https://www.imdb.com/title/tt0478304/) (2011).** The family and the universe in one visual thought.
+5. **Lars von Trier, [_Melancholia_](https://www.imdb.com/title/tt1527186/) (2011).** An apocalypse without Alexander's bargain.
+6. **Béla Tarr and [Ágnes Hranitzky](https://en.wikipedia.org/wiki/%C3%81gnes_Hranitzky), [_Werckmeister Harmonies_](https://www.imdb.com/title/tt0249241/) (2000).** Time without the same promise of transcendence.
+7. **Nuri Bilge Ceylan, [_Once Upon a Time in Anatolia_](https://www.imdb.com/title/tt1827487/) (2011).** Mystery and responsibility without supernatural rules.
+8. **Apichatpong Weerasethakul, [_Memoria_](https://www.imdb.com/title/tt8399288/) (2021).** Memory at the boundary of consciousness and the world.
 
-Three worthwhile detours are Bresson's _Diary of a Country Priest_, Antonioni's _L'Avventura_, and Zvyagintsev's _The Return_. Then watch _The Sacrifice_ again.
+Three worthwhile detours are Bresson's [_Diary of a Country Priest_](https://www.imdb.com/title/tt0042619/), Antonioni's [_L'Avventura_](https://www.imdb.com/title/tt0053619/), and Zvyagintsev's [_The Return_](https://www.imdb.com/title/tt0376968/). Then watch [_The Sacrifice_](https://www.imdb.com/title/tt0091670/) again.
 
 ## One last tree
 
