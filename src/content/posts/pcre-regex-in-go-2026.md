@@ -2,7 +2,7 @@
 title: "PCRE in Go in 2026: wasm2go Is Ready, PCRE2 Isn't"
 author: franchb
 pubDatetime: 2026-10-28T10:00:00Z
-modDatetime: 2026-10-29T04:00:00Z
+modDatetime: 2026-10-29T05:30:00Z
 featured: true
 draft: false
 tags:
@@ -18,7 +18,7 @@ Earlier today I wrote about [a WAL-index bug in go-sqlite3](https://franchb.com/
 
 The trick would work. I still wouldn't ship it today, and most of my reasons have nothing to do with wasm2go.
 
-> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it). The next morning I built both items on its roadmap, first decided not to merge them, then did; [the details](#two-roadmap-items-built-and-merged). Fuzzing is [next](#next-fuzzing-in-ci).
+> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it). The next morning I built both items on its roadmap, first decided not to merge them, then did; [the details](#two-roadmap-items-built-and-merged). Fuzzing came [after that](#fuzzing-in-ci).
 
 ## Table of contents
 
@@ -206,7 +206,7 @@ I merged it anyway. The import grants nothing beyond code the caller already run
 
 One finding from that morning holds independently of both PRs. Building outside the container, from the wasi-sdk 25 release tarball, produced the same `.wasm` hash as CI's container build. For the callout variant, CI regenerated the code and found nothing to commit. The generated code doesn't depend on my build environment, at least not between these two.
 
-### Next: fuzzing in CI
+### Fuzzing in CI
 
 PCRE2's C code is already fuzzed upstream: it ships a libFuzzer harness and runs on OSS-Fuzz. Fuzzing PCRE2's logic again would mostly repeat that work. What OSS-Fuzz doesn't see is what I added:
 
@@ -214,15 +214,23 @@ PCRE2's C code is already fuzzed upstream: it ships a libFuzzer harness and runs
 - the wrapper's offsets, UTF-8 shortcut, empty-match rule and instance pool;
 - the callout path.
 
-So the [fuzzing roadmap](https://github.com/franchb/go-pcre2/blob/main/docs/FUZZING.md) aims there. It uses Go's native fuzzing. With `-fuzz`, `go test` instruments every package the test imports apart from a few runtime and testing packages, so the fuzzer is coverage-guided through the translated PCRE2 itself. Whether that instrumentation makes a 55,000-line file too slow to fuzz is the first thing to measure.
+So the fuzzing in [#10](https://github.com/franchb/go-pcre2/pull/10) aims there, with Go's native fuzzer. With `-fuzz`, `go test` instruments every package the test imports apart from a few runtime and testing packages, so the fuzzer is coverage-guided through the translated PCRE2 itself. I expected the instrumentation to make a 55,000-line file too slow to fuzz. It didn't: on four cores each target runs 2,600 to 7,000 inputs a second and keeps finding new coverage.
 
-The targets check invariants rather than outputs:
+There are four targets, and they check invariants rather than expected outputs:
 
-- **Compile and match.** `Compile` never panics, offsets stay in bounds and on rune boundaries, the different methods agree with each other, and a `Regexp` behaves the same after an error as a fresh one.
+- **Compile and match.** `Compile` never panics. Offsets stay in bounds and on character boundaries. The different methods agree with each other. A `Regexp` behaves the same after an error as a fresh one.
 - **Callouts.** The fuzzer decides what each callout returns: continue, `Fail`, an error or a panic.
-- **A differential target.** This one has a real oracle. The wasm2go module and native PCRE2 with the JIT off run the same C code from the same commit, so any difference in the ovector is a translation or wrapper bug. It needs one refactor first: the two backends are chosen by a build tag, so they can't yet be linked into one test binary.
+- **A differential target.** This is the only one with a real oracle. The wasm2go module and native PCRE2 with the JIT off run the same C code from the same commit, so they must return the same result code and offsets. Any difference is a translation or wrapper bug. I had planned a refactor so both backends could be linked into one test binary. It turned out unnecessary: the cgo build of the test drives the generated module directly with a 60-line driver. The heap limit has to stay off, because PCRE2's heap frames hold pointers, which are 4 bytes in Wasm and 8 natively.
 
-Seeds come from the existing tests and from PCRE2's own test data, about 9,300 patterns. In CI, every PR gets 30 seconds per target, a nightly job gets 20 minutes per target with a cached corpus, and every failing input is committed as a regression test that plain `go test` runs from then on.
+The seeds come from the existing tests and from PCRE2's own test data: 5,522 patterns and 6,681 subjects. Every CI run fuzzes each target for 30 seconds, and the differential one for 60. A nightly job gives each target 20 minutes, keeping its corpus in the Actions cache between nights. A failing input is committed as a regression test that plain `go test` runs from then on.
+
+What it found, so far:
+
+- **No bugs.** About 750,000 executions locally and 207,000 more in CI's first differential run, with no failure. The wasm2go module and native PCRE2 never disagreed. That is the first evidence beyond PCRE2's own test suite that the translation is faithful.
+- **One of my invariants was wrong.** PCRE2's tests use `\C`, which matches a single byte even in UTF-8 mode, so a match can legitimately split a character. The boundary check now skips patterns that contain it.
+- **The cgo backend is only as good as the PCRE2 it links.** Against the system's PCRE2 10.42, `\K` reached through a subroutine call inside a lookahead, as in `(?(DEFINE)(?<sneaky>b\K))a(?=(?&sneaky))` on `ab`, returns a match that ends before it starts. 10.49 rejects these at match time. The wasm2go backend carries its own pinned PCRE2, so it is not affected. With the cgo backend on an old system library, `FindString` on such a pattern would panic while slicing the subject.
+
+Getting that last finding right took one false start. For a while my local cgo test binary was silently linked against the system's 10.42 rather than the 10.49 I had built, and the differential target skipped itself on the version mismatch while reporting "ok". I only trusted its results once `strings` on the test binary showed it really contained 10.49.
 
 ### So what do I use now
 
