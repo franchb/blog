@@ -18,7 +18,7 @@ Earlier today I wrote about [a WAL-index bug in go-sqlite3](https://franchb.com/
 
 The trick would work. I still wouldn't ship it today, and most of my reasons have nothing to do with wasm2go.
 
-> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it). The next morning I built both items on its roadmap and merged neither; [here is why](#two-roadmap-items-i-built-and-didnt-merge).
+> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it). The next morning I built both items on its roadmap, first decided not to merge them, then did; [the details](#two-roadmap-items-built-and-merged). Fuzzing is [next](#next-fuzzing-in-ci).
 
 ## Table of contents
 
@@ -141,7 +141,7 @@ The module version follows PCRE2: `v0.49.0` is PCRE2 10.49. A daily job opens a 
 CI checks two properties rather than leaving them as promises:
 
 - **Reproducible output.** Every run regenerates the 55,000 lines of generated Go from the pinned PCRE2 commit, and fails if they differ from what is committed.
-- **No imports.** The Wasm module has none, and the build fails if PCRE2 ever needs one. A regex has no way to reach files, the network, the clock or the process.
+- **No imports.** The Wasm module had none, and the build failed if PCRE2 ever needed one. A regex has no way to reach files, the network, the clock or the process. Since callouts (below) it has exactly one import, and the build fails if that ever changes.
 
 For the "honest benchmarks against a native JIT build" part, the repo also has a cgo backend (`-tags pcre2_cgo`). It links native PCRE2 built from the same commit, with the JIT on or off. CI runs every engine on one runner, so the numbers below come from the same machine.
 
@@ -173,9 +173,9 @@ Three changes followed:
 2. **Validate in Go.** `utf8.Valid` replaced PCRE2's byte-by-byte check, reaching 1.0×.
 3. **wasm2go's `-unsafe` option.** Generating with it gave about 2.5× across the board, reaching 1.6×. The option only changes the generated load and store helpers: each access still runs an explicit bounds check on its last byte, then does an unaligned load.
 
-### Two roadmap items I built and didn't merge
+### Two roadmap items, built and merged
 
-The README ended with a two-item roadmap. The next morning I built both, measured them, and left both PRs open and unmerged.
+The README ended with a two-item roadmap. The next morning I built both and measured them. I first left both PRs unmerged, and after reading the results again I merged them.
 
 **A lighter path for very small subjects.** I wrote this item because a 10-byte `MatchString` cost 323 ns, against 176 for regexp2, and I assumed the price was entering the Wasm module. A CPU profile said otherwise. wasm2go's exports are plain Go method calls, so the boundary costs next to nothing. About 72% of the call was `pcre2_match` itself: roughly a fifth of the call was its setup and the rest the interpreter. Most of the remainder was my wrapper building a slice of offsets on every match, even for `MatchString`, which returns only a bool.
 
@@ -185,21 +185,44 @@ The README ended with a two-item roadmap. The next morning I built both, measure
 - methods that return only the whole match read only that pair;
 - `FindAll` takes its results from shared chunks.
 
-On the same runner type (EPYC 7763), the small call went from 323 to 275 ns, and the simple pattern from 190 to 214 MB/s. `FindAll` dropped from 1,013 allocations on the corpus to 19. That is a real but modest gain, and it doesn't change the picture: per call, go-pcre2 is still about 1.5× regexp2. No "lighter path" exists to build. The remaining cost is PCRE2's own interpreter, run through translated code.
+On the same runner type (EPYC 7763), the small call went from 323 to 275 ns, and the simple pattern from 190 to 214 MB/s. `FindAll` dropped from 1,013 allocations on the corpus to 19. The cgo backend gained too: its JIT went from 457 to 606 MB/s on the simple pattern, because the allocations had been the same there. It is a modest gain, and it doesn't change the picture: per call, go-pcre2 is still about 1.5× regexp2. No "lighter path" exists to build. The remaining cost is PCRE2's own interpreter, run through translated code.
 
 **Callouts.** `(?C1)` and `(?C"text")` call back into the host during a match. They are PCRE2's escape hatch for checks a regex can't express, such as "this octet is at most 255". They are also the one feature that needs a host import. PCRE2 calls the callout through a function pointer, and in Wasm that pointer has to name a function inside the module. So the module needs a small C shim that forwards the callout block to an imported function, and the Go wrapper implements that import.
 
 [#8](https://github.com/franchb/go-pcre2/pull/8) does exactly that:
 
 - the build check becomes "exactly this one import";
-- the import only calls the Go function you pass in;
-- the shim asserts the callout block's field offsets at compile time.
+- the import only calls the Go function you pass to `OnCallout`, and is installed only on patterns compiled with it;
+- the shim asserts the callout block's field offsets at compile time, so a future PCRE2 that moves a field breaks the build instead of returning wrong values.
 
-It works on both backends, with tests under `-race`. It also cost about 5% on small calls for patterns that use no callouts at all. The hot generated functions were byte-for-byte identical, so I couldn't attribute it. And it gives up the strongest claim the library makes, that the module imports nothing. "One import, and it only calls your code" is still a defensible sandbox. But it is a sentence a reviewer has to read and believe, where "zero imports" is a fact a single command can check. For a feature few rule sets use, that trade isn't worth it.
+It works on both backends, with tests under `-race`. A panic in the callback is recovered before it can unwind through PCRE2, and then raised again in the caller, so the `Regexp` stays usable.
 
-So `main` stays as it was, with no imports. Both PRs remain open as a record of what was tried and what it measured.
+Two costs made me hesitate:
 
-One finding from that morning did hold up. Building outside the container, from the wasi-sdk 25 release tarball, produced the same `.wasm` hash as CI's container build. For the callout variant, CI regenerated the code and found nothing to commit. The generated code doesn't depend on my build environment, at least not between these two.
+- **Speed.** Small calls got about 5% slower on my machine, even for patterns with no callouts. The hot generated functions were byte-for-byte identical, so I couldn't attribute it.
+- **The sandbox claim.** "Zero imports" is a fact a single command can check. "One import, and it only calls your code" is a sentence a reviewer has to read and believe.
+
+I merged it anyway. The import grants nothing beyond code the caller already runs, and the build still fails if the import list changes. Callouts are the one PCRE2 feature that was missing.
+
+One finding from that morning holds independently of both PRs. Building outside the container, from the wasi-sdk 25 release tarball, produced the same `.wasm` hash as CI's container build. For the callout variant, CI regenerated the code and found nothing to commit. The generated code doesn't depend on my build environment, at least not between these two.
+
+### Next: fuzzing in CI
+
+PCRE2's C code is already fuzzed upstream: it ships a libFuzzer harness and runs on OSS-Fuzz. Fuzzing PCRE2's logic again would mostly repeat that work. What OSS-Fuzz doesn't see is what I added:
+
+- the translation into 55,000 lines of Go;
+- the wrapper's offsets, UTF-8 shortcut, empty-match rule and instance pool;
+- the callout path.
+
+So the [fuzzing roadmap](https://github.com/franchb/go-pcre2/blob/main/docs/FUZZING.md) aims there. It uses Go's native fuzzing. With `-fuzz`, `go test` instruments every package the test imports apart from a few runtime and testing packages, so the fuzzer is coverage-guided through the translated PCRE2 itself. Whether that instrumentation makes a 55,000-line file too slow to fuzz is the first thing to measure.
+
+The targets check invariants rather than outputs:
+
+- **Compile and match.** `Compile` never panics, offsets stay in bounds and on rune boundaries, the different methods agree with each other, and a `Regexp` behaves the same after an error as a fresh one.
+- **Callouts.** The fuzzer decides what each callout returns: continue, `Fail`, an error or a panic.
+- **A differential target.** This one has a real oracle. The wasm2go module and native PCRE2 with the JIT off run the same C code from the same commit, so any difference in the ovector is a translation or wrapper bug. It needs one refactor first: the two backends are chosen by a build tag, so they can't yet be linked into one test binary.
+
+Seeds come from the existing tests and from PCRE2's own test data, about 9,300 patterns. In CI, every PR gets 30 seconds per target, a nightly job gets 20 minutes per target with a cached corpus, and every failing input is committed as a regression test that plain `go test` runs from then on.
 
 ### So what do I use now
 
