@@ -2,6 +2,7 @@
 title: "PCRE in Go in 2026: wasm2go Is Ready, PCRE2 Isn't"
 author: franchb
 pubDatetime: 2026-10-28T10:00:00Z
+modDatetime: 2026-10-28T21:20:00Z
 featured: true
 draft: false
 tags:
@@ -16,6 +17,8 @@ description: "wasm2go now carries go-sqlite3 and go-re2 without cgo, so why not 
 Earlier today I wrote about [a WAL-index bug in go-sqlite3](https://franchb.com/posts/mapping-sqlite-wal-index-into-wasm-memory/), the SQLite driver that compiles SQLite to WebAssembly and translates the module into Go with [wasm2go](https://github.com/ncruces/wasm2go). I run it in production. The obvious next question is whether the same trick works for PCRE2. Go's `regexp` package is RE2, so it has no backreferences and no lookaround, and a lot of rule sets in the wild (ModSecurity rules, old Perl tooling) were written with PCRE in mind.
 
 The trick would work. I still wouldn't ship it today, and most of my reasons have nothing to do with wasm2go.
+
+> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it).
 
 ## Table of contents
 
@@ -125,6 +128,55 @@ cgo bindings ([jemmic/go-pcre2](https://github.com/jemmic/go-pcre2) for PCRE2, [
 
 A maintained `go-pcre2` on wasm2go, released alongside each PCRE2 version, with honest benchmarks against a native JIT build. The pieces are all there now: wasm2go is proven on larger C codebases than PCRE2, and go-re2 shows how to wrap a regex engine around it. If someone publishes it, option 3 becomes "import it", and I'd use it for the patterns regexp2 can't handle.
 
+## Update: so I built it
+
+The evening after publishing this, I looked again for a maintained `go-pcre2` on wasm2go. There wasn't one, so I made [franchb/go-pcre2](https://github.com/franchb/go-pcre2). It is PCRE2 10.49:
+
+1. compiled with wasi-sdk, JIT off;
+2. translated to Go with wasm2go;
+3. wrapped in an API close to `regexp`, except that match methods return an `error`, because a backtracking match can hit a limit.
+
+The module version follows PCRE2: `v0.49.0` is PCRE2 10.49. A daily job opens a bump PR when PCRE2 tags a release.
+
+CI checks two properties rather than leaving them as promises:
+
+- **Reproducible output.** Every run regenerates the 55,000 lines of generated Go from the pinned PCRE2 commit, and fails if they differ from what is committed.
+- **No imports.** The Wasm module has none, and the build fails if PCRE2 ever needs one. A regex has no way to reach files, the network, the clock or the process.
+
+For the "honest benchmarks against a native JIT build" part, the repo also has a cgo backend (`-tags pcre2_cgo`). It links native PCRE2 built from the same commit, with the JIT on or off. CI runs every engine on one runner, so the numbers below come from the same machine.
+
+### What it costs
+
+64 KiB of log-like text, medians of 5 runs, a 4-vCPU GitHub runner (AMD EPYC 7763), MB/s:
+
+| pattern                       | Go `regexp` | regexp2 | go-pcre2 | PCRE2 interpreter (native) | PCRE2 JIT (native) |
+| ----------------------------- | ----------- | ------- | -------- | -------------------------- | ------------------ |
+| `\$\d+\.\d\d`                 | 156         | 118     | **190**  | 296                        | 457                |
+| `\b(\w+) \1\b`                | n/a         | 6.8     | **13.4** | 30.1                       | 140                |
+| `(?<=\$)\d+\.\d\d`            | n/a         | 53.7    | **51.3** | 117                        | 318                |
+| `[\w.]+@[\w.]+\.com`          | 20.3        | 83.5    | **17.7** | 44.8                       | 273                |
+| one 10-byte `MatchString`, ns | 119         | 176     | **323**  | 209                        | 154                |
+
+- **Against regexp2:** go-pcre2 is faster on the simple pattern and the backreference, ties on lookbehind, and loses badly on the email pattern. Its per-call overhead is about twice regexp2's.
+- **Against PCRE2's own interpreter compiled natively:** the translation costs 1.5× to 2.5× on these four patterns. A plain literal search that never matches is the exception: there the native interpreter is 8× faster than go-pcre2, and the JIT is actually slower than the interpreter.
+- **The JIT** is a separate multiplier, 1.5× to 6.1× on these four patterns, and the largest on the email pattern.
+
+The full tables and method are in [docs/BENCHMARKS.md](https://github.com/franchb/go-pcre2/blob/main/docs/BENCHMARKS.md).
+
+### What I got wrong first
+
+The first CI run measured 1.7 MB/s on the simple pattern, about 50× behind regexp2. The cause was mine, not wasm2go's. I had defaulted to `PCRE2_MATCH_INVALID_UTF`, and in `pcre2_match.c` that option "forces a check, overriding the setting of PCRE2_NO_UTF_CHECK". Every call re-validated the subject from the start offset to the end, so `FindAll` was quadratic.
+
+Three changes followed:
+
+1. **Validate once.** Checking the subject one time per `FindAll` brought the simple pattern to 0.84× of regexp2.
+2. **Validate in Go.** `utf8.Valid` replaced PCRE2's byte-by-byte check, reaching 1.0×.
+3. **wasm2go's `-unsafe` option.** Generating with it gave about 2.5× across the board, reaching 1.6×. The option only changes the generated load and store helpers: each access still runs an explicit bounds check on its last byte, then does an unaligned load.
+
+### So what do I use now
+
+The list above changes in one place. If a pattern needs PCRE2 itself (`\K`, recursion, subroutine calls, branch reset), I'd now import go-pcre2 rather than build anything. On simple patterns it is competitive with regexp2. Everything about hostile input still applies: it is a backtracking engine, so set `MatchLimit` and handle the error.
+
 ## Links
 
 - [ncruces/wasm2go](https://github.com/ncruces/wasm2go): the Wasm-to-Go translator, with its [users list](https://github.com/ncruces/wasm2go/blob/main/USERS.md) and [security notes](https://github.com/ncruces/wasm2go/blob/main/SECURITY.md)
@@ -133,4 +185,5 @@ A maintained `go-pcre2` on wasm2go, released alongside each PCRE2 version, with 
 - [PCRE2](https://github.com/PCRE2Project/pcre2): upstream, with the [JIT docs](https://github.com/PCRE2Project/pcre2/blob/pcre2-10.49/doc/pcre2jit.3) and [support lifecycle](https://github.com/PCRE2Project/pcre2/blob/main/SUPPORT-LIFECYCLE.md)
 - [OWASP Coraza](https://github.com/corazawaf/coraza) and [coraza-wasilibs](https://github.com/corazawaf/coraza-wasilibs)
 - [bobby-stripe/go-pcre](https://github.com/bobby-stripe/go-pcre): the 2021 PCRE2-in-Wasm experiment
+- [franchb/go-pcre2](https://github.com/franchb/go-pcre2): PCRE2 via wasm2go, built after this post, with [benchmarks](https://github.com/franchb/go-pcre2/blob/main/docs/BENCHMARKS.md)
 - [Mapping SQLite's WAL-Index into WebAssembly Memory](https://franchb.com/posts/mapping-sqlite-wal-index-into-wasm-memory/): the go-sqlite3 post this one follows
