@@ -2,7 +2,7 @@
 title: "PCRE in Go in 2026: wasm2go Is Ready, PCRE2 Isn't"
 author: franchb
 pubDatetime: 2026-10-28T10:00:00Z
-modDatetime: 2026-10-28T21:20:00Z
+modDatetime: 2026-10-29T04:00:00Z
 featured: true
 draft: false
 tags:
@@ -18,7 +18,7 @@ Earlier today I wrote about [a WAL-index bug in go-sqlite3](https://franchb.com/
 
 The trick would work. I still wouldn't ship it today, and most of my reasons have nothing to do with wasm2go.
 
-> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it).
+> **Update, the same evening:** I built the library this post ends by asking for: [franchb/go-pcre2](https://github.com/franchb/go-pcre2). Benchmarks, and what I got wrong on the way, are in the [last section](#update-so-i-built-it). The next morning I built both items on its roadmap and merged neither; [here is why](#two-roadmap-items-i-built-and-didnt-merge).
 
 ## Table of contents
 
@@ -172,6 +172,34 @@ Three changes followed:
 1. **Validate once.** Checking the subject one time per `FindAll` brought the simple pattern to 0.84× of regexp2.
 2. **Validate in Go.** `utf8.Valid` replaced PCRE2's byte-by-byte check, reaching 1.0×.
 3. **wasm2go's `-unsafe` option.** Generating with it gave about 2.5× across the board, reaching 1.6×. The option only changes the generated load and store helpers: each access still runs an explicit bounds check on its last byte, then does an unaligned load.
+
+### Two roadmap items I built and didn't merge
+
+The README ended with a two-item roadmap. The next morning I built both, measured them, and left both PRs open and unmerged.
+
+**A lighter path for very small subjects.** I wrote this item because a 10-byte `MatchString` cost 323 ns, against 176 for regexp2, and I assumed the price was entering the Wasm module. A CPU profile said otherwise. wasm2go's exports are plain Go method calls, so the boundary costs next to nothing. About 72% of the call was `pcre2_match` itself: roughly a fifth of the call was its setup and the rest the interpreter. Most of the remainder was my wrapper building a slice of offsets on every match, even for `MatchString`, which returns only a bool.
+
+[#7](https://github.com/franchb/go-pcre2/pull/7) fixes the wrapper:
+
+- `MatchString` no longer allocates;
+- methods that return only the whole match read only that pair;
+- `FindAll` takes its results from shared chunks.
+
+On the same runner type (EPYC 7763), the small call went from 323 to 275 ns, and the simple pattern from 190 to 214 MB/s. `FindAll` dropped from 1,013 allocations on the corpus to 19. That is a real but modest gain, and it doesn't change the picture: per call, go-pcre2 is still about 1.5× regexp2. No "lighter path" exists to build. The remaining cost is PCRE2's own interpreter, run through translated code.
+
+**Callouts.** `(?C1)` and `(?C"text")` call back into the host during a match. They are PCRE2's escape hatch for checks a regex can't express, such as "this octet is at most 255". They are also the one feature that needs a host import. PCRE2 calls the callout through a function pointer, and in Wasm that pointer has to name a function inside the module. So the module needs a small C shim that forwards the callout block to an imported function, and the Go wrapper implements that import.
+
+[#8](https://github.com/franchb/go-pcre2/pull/8) does exactly that:
+
+- the build check becomes "exactly this one import";
+- the import only calls the Go function you pass in;
+- the shim asserts the callout block's field offsets at compile time.
+
+It works on both backends, with tests under `-race`. It also cost about 5% on small calls for patterns that use no callouts at all. The hot generated functions were byte-for-byte identical, so I couldn't attribute it. And it gives up the strongest claim the library makes, that the module imports nothing. "One import, and it only calls your code" is still a defensible sandbox. But it is a sentence a reviewer has to read and believe, where "zero imports" is a fact a single command can check. For a feature few rule sets use, that trade isn't worth it.
+
+So `main` stays as it was, with no imports. Both PRs remain open as a record of what was tried and what it measured.
+
+One finding from that morning did hold up. Building outside the container, from the wasi-sdk 25 release tarball, produced the same `.wasm` hash as CI's container build. For the callout variant, CI regenerated the code and found nothing to commit. The generated code doesn't depend on my build environment, at least not between these two.
 
 ### So what do I use now
 
