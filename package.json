@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@pagefind/default-ui": "^1.5.2",
+    "@pagefind/default-ui": "^1.6.0",
     "@shikijs/transformers": "^4.5.0",
     "@tailwindcss/typography": "^0.5.20",
     "@types/lodash.kebabcase": "^4.1.9",
